@@ -1,0 +1,57 @@
+﻿#about-us {
+    text-align: center;
+    clear: both;
+
+    #about-us-paragraph {
+        margin-bottom: 55px;
+    }
+
+    h2 {
+        margin-bottom: 45px;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    img {
+        float: right;
+        height: 450px;
+        width: 50%;
+        padding: 0 10px;
+    }
+
+    %employee-image {
+        text-align: center;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        background-size: cover;
+    }
+
+    .people-img-hover {
+        @extend %employee-image;
+        display: none;
+    }
+
+    .people-img {
+        @extend %employee-image;
+        display: block;
+    }
+
+    .people-img-container {
+        &:hover {
+            .people-img {
+                display: none;
+            }
+
+            .people-img-hover {
+                display: block;
+            }
+        }
+    }
+
+    .people-bio {
+        margin-bottom: 45px;
+    }
+}

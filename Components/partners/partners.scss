@@ -1,0 +1,113 @@
+﻿#partners {
+    position: relative;
+
+    #partners-container {
+        white-space: nowrap;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    .partner-container {
+        padding: 5px 10px;
+        width: 25%;
+        height: 150px;
+        display: inline-block;
+    }
+
+    .partner {
+        height: 150px;
+        width: 100%;
+        background: url('/images/global-network.jpg') no-repeat center;
+        background-size: cover;
+        margin: 5px;
+    }
+
+    .see-all-partners-link {
+        text-align: center;
+    }
+
+    #partner-slider {
+        overflow: hidden;
+        position: relative;
+        height: 150px;
+    }
+
+    #slider__left-arrow-container {
+        position: absolute;
+        left: -60px;
+        top: 135px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+        &:hover {
+            background: grey;
+            cursor: pointer;
+        }
+
+        #slider__left-arrow {
+            position: absolute;
+            top: 13px;
+            left: 15px;
+            height: 25px;
+            width: 25px;
+            transform: rotate(45deg);
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+        }
+    }
+
+    #slider__right-arrow-container {
+        position: absolute;
+        right: -64px;
+        top: 135px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+
+        &:hover {
+            background: grey;
+            cursor: pointer;
+        }
+
+        #slider__right-arrow {
+            position: absolute;
+            top: 13px;
+            right: 18px;
+            height: 25px;
+            width: 25px;
+            transform: rotate(-135deg);
+            border-bottom: 2px solid black;
+            border-left: 2px solid black;
+        }
+    }
+}
+
+#partners-page {
+    .partner {
+        height: 225px;
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+
+        &:hover {
+            .partner-info {
+                top: 112.5px;
+            }
+        }
+    }
+
+    .partner-info {
+        position: absolute;
+        background: rgba(0, 0, 0, .5);
+        top: 225px;
+        transition-property: all;
+        transition-duration: .5s;
+        width: 100%;
+        height: 100%;
+        color: white;
+        padding: 0 10px;
+    }
+}

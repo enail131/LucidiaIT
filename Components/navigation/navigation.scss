@@ -1,0 +1,67 @@
+﻿#navigation {
+    z-index: 1;
+    height: 0;
+    text-align: center;
+    min-height: 0;
+    margin-bottom: 0;
+
+    .navbar-nav {
+        float: none;
+        li {
+            float: none;
+        }
+    }
+
+    .navbar-collapse {
+        margin-top: 15px;
+    }
+
+    @media (max-width: $bp-xs) {
+        float: none;
+        clear: both;
+
+        .navbar-nav {
+            li {
+                border-bottom: 1px solid;
+            }
+        }
+    }
+
+    &::after {
+        @extend %clear-fix;
+    }
+
+    #header-logo {
+        height: 75px;
+    }
+
+    #logo-circle {
+        background: black;
+        height: 310px;
+        width: 335px;
+        border-radius: 50%;
+        margin-top: -175px;
+    }
+
+    .trapazoid {
+        border-bottom: 480px solid black;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        height: 99px;
+        width: 240px;
+        position: absolute;
+        top: 150px;
+        left: 10%;
+    }
+
+    @media (min-width: 1400px) {
+        .trapazoid {
+            left: 15%;
+        }
+    }
+
+    .navbar-brand {
+        margin-top: 175px;
+        margin-left: 25px;
+    }
+}

@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LucidiaIT.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<LucidiaIT.Models.PartnerModels.Partner>
+
+@{
+    ViewData["Title"] = "Partners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Jumbotron {
+    <div class="jumbotron">
+        <div class="col-sm-12 col-md-4" id="jumbotron-content">
+            <h2>Partners.</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+}
+
+<h2>Partners</h2>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-controller="Partners" asp-action="Create">Create New</a> | 
+        <a asp-controller="Partners" asp-action="Index">Partners List</a>
+    </p>
+}
+
+
+<div class="container" id="partners-page">
+    <div class="row">
+        @foreach (var partner in Model)
+        {
+            <a href="@partner.URL" class="partner col-sm-12 col-md-4" style="background: url('@partner.Logo') no-repeat center;">
+                <div class="partner-info">
+                    <h2>@partner.Name</h2>
+                    <p>@partner.Description</p>
+                </div>
+            </a>
+        }
+    </div>    
+</div>
+

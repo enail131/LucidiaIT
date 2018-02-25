@@ -1,0 +1,33 @@
+﻿#footer-container {
+    background: black;
+    color: rgb(51, 122, 183);
+    margin-top: 45px;
+
+
+    #footer-nav {
+        float: right;
+        list-style-type: none;
+        padding: 0;
+        display: inline-block;
+        margin: 25px 0;
+
+        li {
+            margin: 5px 0;
+
+            a {
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .footer-brand {
+        float: left;
+        margin-top: 25px;
+    }
+
+    #copyright {
+        clear: both;
+    }
+}

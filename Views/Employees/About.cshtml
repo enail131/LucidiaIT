@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LucidiaIT.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<LucidiaIT.Models.EmployeeModels.Employee>
+
+@{
+    ViewData["Title"] = "About";
+}
+
+@section Jumbotron {
+    <div class="jumbotron">
+        <div class="col-sm-12 col-md-4" id="jumbotron-content">
+            <h2>Lucidia iT</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+}
+
+<div id="about-us">
+    <h2>@ViewData["Title"]</h2>
+    <img id="about-us-img" src="~/images/house-trees-field-sky.jpg" alt="house trees field sky" />
+    <p id="about-us-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="clearfix"></div>
+    <h2>Our people</h2>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>
+            <a asp-controller="Employees" asp-action="Create">Create New</a> |
+            <a asp-controller="Employees" asp-action="Index">Employees List</a>
+        </p>
+    }
+    <div class="row" id="people-container">
+        @foreach (var employee in Model)
+        {
+             <div class="col-sm-12 col-md-4 people-bio">
+                 <div class="col-sm-6 col-sm-offset-3 people-img-container">
+                     <div class="col-sm-12 people-img" style="background: url('@employee.InitialImage') no-repeat center;"></div>
+                     <div class="col-sm-12 people-img-hover" style="background: url('@employee.HoverImage') no-repeat center;"></div>
+                 </div>                
+                <div class="col-sm-12">
+                    <h3>@employee.FirstName @employee.LastName</h3>
+                    <h4>@employee.Title</h4>
+                    <p>@employee.Description</p>
+                </div>
+            </div>    
+        }               
+    </div>
+</div>
+

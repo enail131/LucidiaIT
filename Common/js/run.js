@@ -1,0 +1,1 @@
+﻿jQuery(document).ready(lucidia.init);
