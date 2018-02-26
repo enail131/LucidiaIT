@@ -13,13 +13,15 @@ namespace LucidiaIT.Controllers
 {
     public class ContactUsController : Controller
     {
-        private static IConfiguration _configuration;
-        private readonly ISmtpBuilder _client;
+        private readonly IEmailSender _emailSender;
+        private IMessageBuilder _messageBuilder;
 
-        public ContactUsController(IConfiguration configuration, ISmtpBuilder client)
+        public ContactUsController(
+            IEmailSender emailSender,
+            IMessageBuilder messageBuilder)
         {
-            _configuration = configuration;
-            _client = client;
+            _emailSender = emailSender;
+            _messageBuilder = messageBuilder;
         }
 
         public IActionResult Index()
@@ -33,8 +35,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    SmtpClient client = _client.GetSmtp();
-                    client.Send(GetMessage(contact));
+                    _emailSender.SendEmail(contact, _messageBuilder.BuildContactMessage(contact));
                     return PartialView("_Success", contact);
                 }
                 catch
@@ -46,24 +47,6 @@ namespace LucidiaIT.Controllers
             {
                 return PartialView("_Failure", contact);
             }
-        }
-
-        /// <summary>
-        /// Get MailMessage object
-        /// </summary>
-        /// <param name="contact">
-        /// Accepts ContactFormModel to build the message
-        /// </param>
-        /// <returns></returns>
-        private MailMessage GetMessage(ContactUsViewModel contact)
-        {
-            MailMessage message = new MailMessage();
-            message.To.Add(_configuration["EmailSettings:EmailAddress"]);
-            message.From = new MailAddress(_configuration["EmailSettings:EmailAddress"], _configuration["EmailSettings:Title"]);
-            message.Subject = "New contact message";
-            message.Body = $"Name: {contact.Name} \n\nEmail: {contact.EmailAddress} \n\nMessage: \n{contact.Message}";
-
-            return message;
-        }
+        }        
     }
 }

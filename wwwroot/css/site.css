@@ -111,6 +111,9 @@
   #footer-container #copyright {
     clear: both; }
 
+#register-container {
+  float: right; }
+
 #page-jumbotron .jumbotron {
   background: url("/images/water.jpg") no-repeat center;
   background-size: cover;
@@ -167,9 +170,6 @@
   #navigation .navbar-brand {
     margin-top: 175px;
     margin-left: 25px; }
-
-#register-container {
-  float: right; }
 
 #partners {
   position: relative; }

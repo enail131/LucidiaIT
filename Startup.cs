@@ -45,6 +45,7 @@ namespace LucidiaIT
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ISmtpBuilder, SmtpBuilder>();
             services.AddTransient<IUploadImage, UploadImage>();
+            services.AddTransient<IMessageBuilder, MessageBuilder>();
             services.AddSingleton(Configuration);
 
             services.AddMvc();

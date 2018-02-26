@@ -18,11 +18,19 @@ namespace LucidiaIT.Controllers
     {
         private readonly EmployeeContext _context;
         private readonly IUploadImage _uploadImage;
+        private readonly IEmailSender _emailSender;
+        private readonly IMessageBuilder _messageBuilder;
 
-        public EmployeesController(EmployeeContext context, IUploadImage uploadImage)
+        public EmployeesController(
+            EmployeeContext context, 
+            IUploadImage uploadImage, 
+            IEmailSender emailSender,
+            IMessageBuilder messageBuilder)
         {
             _context = context;
             _uploadImage = uploadImage;
+            _emailSender = emailSender;
+            _messageBuilder = messageBuilder;
         }
 
         // GET: Employees
@@ -69,12 +77,21 @@ namespace LucidiaIT.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uploadImage.UploadEmployeeImages(employee, files);
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _uploadImage.UploadEmployeeImages(employee, files);
+                    _context.Add(employee);
+                    await _context.SaveChangesAsync();
+                    return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
+                }
+                catch (Exception e)
+                {
+                    _emailSender.SendEmail(_messageBuilder.BuildErrorMessage(e));
+                    return PartialView("~/Views/Shared/_CreateFailed.cshtml");
+                }
+                
             }
-            return View(employee);
+            return PartialView("~/Views/Shared/_CreateFailed.cshtml");
         }
 
         

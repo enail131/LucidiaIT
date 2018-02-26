@@ -8,6 +8,6 @@ namespace LucidiaIT.Interfaces
 {
     public interface ISmtpBuilder
     {
-        SmtpClient GetSmtp();
+        SmtpClient GetSmtpClient();
     }
 }

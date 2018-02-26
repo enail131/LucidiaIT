@@ -5,7 +5,8 @@
             rightArrow: '#slider__right-arrow-container',
             sliderArrow: '.slider-arrow',
             sliderContainer: '#partners #partners-container',
-            partner: '.partner-container'
+            partner: '.partner-container',
+            createPartnerContainer: '#create-partner-container'
         },
         ajax: {
             createPartnerButton: '#create-partner-btn',
@@ -59,10 +60,11 @@
                         },
                         enctype: 'multipart/form-data',
                         url: c.ajax.createPartnerUrl,
-                        success: function (data) {
-                            //console.log(data);
-                        }
+                        success: createPartnerSucces
                     });
+                },
+                createPartnerSucces = function (data) {
+                    $(c.selectors.createPartnerContainer).html(data);
                 },
                 getPartnerInfo = function (formData) {
                     $(c.ajax.partnerInfoForm + " input[type='text']").each(function () {

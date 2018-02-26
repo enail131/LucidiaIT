@@ -11,7 +11,8 @@
             token: "input[name='__RequestVerificationToken']"
         },
         selectors: {
-            employeeImage: ".people-img"
+            employeeImage: ".people-img",
+            employeeContainer: "#create-employee-container"
         }
     },
         properties = {
@@ -40,10 +41,11 @@
                         },
                         enctype: 'multipart/form-data',
                         url: c.ajax.createEmployeeUrl,
-                        success: function (data) {
-                            //console.log(data);
-                        }
+                        success: createEmployeeSuccess
                     });
+                },
+                createEmployeeSuccess = function (data) {
+                    $(c.selectors.employeeContainer).html(data);
                 },
                 getEmployeeInfo = function (formData) {
                     $(c.ajax.employeeForm + " input[type='text']").each(function () {
@@ -64,18 +66,6 @@
                             formData.append('files', files[0]);
                         }
                     });
-                },
-                hoverOnImage = function () {
-                    var employeeImage = $(c.selectors.employeeImage);
-                    var initialImage = employeeImage.attr('style');
-                    var hoverImage = employeeImage.data("hover-image");
-                    employeeImage
-                        .mouseout(function () {
-                            $(this).attr('style', initialImage);
-                        })
-                        .mouseenter(function () {
-                            $(this).attr('style', hoverImage + " no-repeat center");
-                        });
                 },
                 eventHandlers = function () {
                     clickCreateButtonHandler();

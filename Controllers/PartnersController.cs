@@ -17,11 +17,19 @@ namespace LucidiaIT.Controllers
     {
         private readonly PartnerContext _context;
         private readonly IUploadImage _uploadImage;
+        private readonly IEmailSender _emailSender;
+        private readonly IMessageBuilder _messageBuilder;
 
-        public PartnersController(PartnerContext context, IUploadImage uploadImage)
+        public PartnersController(
+            PartnerContext context,
+            IUploadImage uploadImage,
+            IEmailSender emailSender,
+            IMessageBuilder messageBuilder)
         {
             _context = context;
             _uploadImage = uploadImage;
+            _emailSender = emailSender;
+            _messageBuilder = messageBuilder;
         }
 
         public async Task<IActionResult> Partners()
@@ -68,12 +76,20 @@ namespace LucidiaIT.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _uploadImage.UploadPartnerImages(partner, files);
-                _context.Add(partner);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _uploadImage.UploadPartnerImages(partner, files);
+                    _context.Add(partner);
+                    await _context.SaveChangesAsync();
+                    return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
+                }
+                catch (Exception e)
+                {
+                    _emailSender.SendEmail(_messageBuilder.BuildErrorMessage(e));
+                    return PartialView("~/Views/Shared/_CreateFailed.cshtml");
+                }
             }
-            return View(partner);
+            return PartialView("~/Views/Shared/_CreateFailed.cshtml");
         }
 
         // GET: Partners/Edit/5

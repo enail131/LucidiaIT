@@ -17,7 +17,7 @@ namespace LucidiaIT.Services
             _configuration = configuration;
         }
 
-        public SmtpClient GetSmtp() => new SmtpClient(_configuration["EmailSettings:Host"], Int32.Parse(_configuration["EmailSettings:Port"]))
+        public SmtpClient GetSmtpClient() => new SmtpClient(_configuration["EmailSettings:Host"], Int32.Parse(_configuration["EmailSettings:Port"]))
         {
             EnableSsl = true,
             UseDefaultCredentials = false,
