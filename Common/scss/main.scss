@@ -7,3 +7,9 @@
 .body-content {
     margin-top: 150px;
 }
+
+@media (max-width: $bp-xs) {
+    .body-content {
+        margin-top: 75px;
+    }       
+}

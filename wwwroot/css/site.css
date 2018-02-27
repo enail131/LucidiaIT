@@ -1,3 +1,5 @@
+/* BREAKPOINTS */
+/* END BREAKPOINTS */
 #navigation::after {
   clear: both;
   content: " ";
@@ -6,8 +8,10 @@
 .body-content {
   margin-top: 150px; }
 
-/* BREAKPOINTS */
-/* END BREAKPOINTS */
+@media (max-width: 768px) {
+  .body-content {
+    margin-top: 75px; } }
+
 #about-us {
   text-align: center;
   clear: both; }
@@ -111,9 +115,6 @@
   #footer-container #copyright {
     clear: both; }
 
-#register-container {
-  float: right; }
-
 #page-jumbotron .jumbotron {
   background: url("/images/water.jpg") no-repeat center;
   background-size: cover;
@@ -129,6 +130,16 @@
   #page-jumbotron #jumbotron-content h2 {
     font-size: 40px; }
 
+@media (max-width: 768px) {
+  #page-jumbotron #jumbotron-content {
+    color: #D7D7D7;
+    right: 0;
+    top: 30%;
+    background: rgba(0, 0, 0, 0.4); } }
+
+#register-container {
+  float: right; }
+
 #navigation {
   z-index: 1;
   height: 0;
@@ -141,12 +152,6 @@
       float: none; }
   #navigation .navbar-collapse {
     margin-top: 15px; }
-  @media (max-width: 768px) {
-    #navigation {
-      float: none;
-      clear: both; }
-      #navigation .navbar-nav li {
-        border-bottom: 1px solid; } }
   #navigation #header-logo {
     height: 75px; }
   #navigation #logo-circle {
@@ -164,6 +169,32 @@
     position: absolute;
     top: 150px;
     left: 10%; }
+  @media (max-width: 768px) {
+    #navigation {
+      float: none;
+      clear: both; }
+      #navigation .navbar-nav li {
+        border-bottom: 1px solid;
+        background: black; }
+      #navigation .navbar-header .navbar-toggle .icon-bar {
+        height: 4px;
+        width: 25px;
+        border-radius: 4px;
+        background: #000;
+        border: 1px solid #000; }
+      #navigation .navbar-header #logo-circle {
+        width: 85%; }
+        #navigation .navbar-header #logo-circle .navbar-brand {
+          margin-top: 0; }
+          #navigation .navbar-header #logo-circle .navbar-brand #header-logo {
+            height: 70px; }
+      #navigation .trapazoid {
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        height: auto;
+        width: 100%;
+        position: initial; } }
   @media (min-width: 1400px) {
     #navigation .trapazoid {
       left: 15%; } }
@@ -236,6 +267,16 @@
               transform: rotate(-135deg);
       border-bottom: 2px solid black;
       border-left: 2px solid black; }
+  @media (max-width: 768px) {
+    #partners #slider__right-arrow-container {
+      right: -6px;
+      z-index: 1; }
+    #partners #slider__left-arrow-container {
+      left: 0;
+      z-index: 1; }
+    #partners .partner-container {
+      width: 85%;
+      margin-left: 6%; } }
 
 #partners-page .partner {
   height: 225px;
@@ -257,3 +298,9 @@
   height: 100%;
   color: white;
   padding: 0 10px; }
+
+@media (max-width: 1100px) {
+  #partners-page #slider__left-arrow {
+    left: 40px; }
+  #partners-page #slider__right-arrow {
+    right: 35px; } }

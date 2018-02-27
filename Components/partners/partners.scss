@@ -83,6 +83,23 @@
             border-left: 2px solid black;
         }
     }
+
+    @media (max-width: $bp-xs) {
+        #slider__right-arrow-container {
+            right: -6px;
+            z-index: 1;
+        }
+
+        #slider__left-arrow-container {
+            left: 0;
+            z-index: 1;
+        }
+
+        .partner-container {
+            width: 85%;
+            margin-left: 6%;
+        }
+    }
 }
 
 #partners-page {
@@ -109,5 +126,15 @@
         height: 100%;
         color: white;
         padding: 0 10px;
+    }
+
+    @media (max-width: 1100px) {
+        #slider__left-arrow {
+            left: 40px;
+        }
+
+        #slider__right-arrow {
+            right: 35px;
+        }
     }
 }

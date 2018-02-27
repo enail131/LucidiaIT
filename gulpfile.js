@@ -60,6 +60,7 @@ gulp.task('minify', ['js'], function (cb) {
 
 gulp.task('sass', function () {
     return gulp.src([
+        'Common/scss/variables.scss',
         'Common/scss/main.scss',
         'Common/scss/*.scss',
         'Components/**/*.scss',

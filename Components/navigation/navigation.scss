@@ -7,6 +7,7 @@
 
     .navbar-nav {
         float: none;
+
         li {
             float: none;
         }
@@ -14,17 +15,6 @@
 
     .navbar-collapse {
         margin-top: 15px;
-    }
-
-    @media (max-width: $bp-xs) {
-        float: none;
-        clear: both;
-
-        .navbar-nav {
-            li {
-                border-bottom: 1px solid;
-            }
-        }
     }
 
     &::after {
@@ -52,6 +42,50 @@
         position: absolute;
         top: 150px;
         left: 10%;
+    }
+
+    @media (max-width: $bp-xs) {
+        float: none;
+        clear: both;
+
+        .navbar-nav {
+            li {
+                border-bottom: 1px solid;
+                background: black;
+            }
+        }
+
+        .navbar-header {
+            .navbar-toggle {
+                .icon-bar {
+                    height: 4px;
+                    width: 25px;
+                    border-radius: 4px;
+                    background: #000;
+                    border: 1px solid #000;
+                }
+            }
+
+            #logo-circle {
+                width: 85%;
+                .navbar-brand {
+                    margin-top: 0;
+                    
+                    #header-logo {
+                        height: 70px;
+                    }
+                }
+            }
+        }
+
+        .trapazoid {
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            height: auto;
+            width: 100%;
+            position: initial;
+        }
     }
 
     @media (min-width: 1400px) {
