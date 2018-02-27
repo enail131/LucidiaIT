@@ -29,6 +29,47 @@ var lucidia = {
         error: []
     }
 };
+lucidia.components.contactUs = (function ($) {
+    var constants = {
+        selectors: {
+            sendButton: '#send-email-btn',
+            contactForm: '#contact-us-form',
+            contactFormContainer: '#contact-form-container'
+        },
+        ajax: {
+            url: '/ContactUs/SendEmail',
+            dataType: 'HTML'
+        }
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var clickSendButton = function () {
+                $(c.selectors.sendButton).click(function () {
+                    sendEmail();
+                });                
+            },
+                sendEmail = function (formData) {
+                    if ($(c.selectors.contactForm).valid()) {
+                        $.post(c.ajax.url, $(c.selectors.contactForm).serialize(), sendEmailCallback, c.ajax.dataType);
+                    }
+                },
+                sendEmailCallback = function (data) {
+                    $(c.selectors.contactFormContainer).html(data);
+                },
+                eventHandlers = function () {
+                    clickSendButton();
+                },
+                init = function () {
+                    eventHandlers();
+                };
+            return {
+                init: init
+            }
+        }(constants, properties));
+    return methods;
+}(jQuery));
 
 lucidia.components.employee = (function ($) {
     var constants = {
@@ -112,67 +153,7 @@ lucidia.components.employee = (function ($) {
     return methods;
 }(jQuery));
 
-lucidia.components.contactUs = (function ($) {
-    var constants = {
-        selectors: {
-            sendButton: '#send-email-btn',
-            contactForm: '#contact-us-form',
-            contactFormContainer: '#contact-form-container'
-        },
-        ajax: {
-            url: '/ContactUs/SendEmail',
-            dataType: 'HTML'
-        }
-    },
-        properties = {
 
-        },
-        methods = (function (c, p) {
-            var clickSendButton = function () {
-                $(c.selectors.sendButton).click(function () {
-                    sendEmail();
-                });                
-            },
-                sendEmail = function (formData) {
-                    if ($(c.selectors.contactForm).valid()) {
-                        $.post(c.ajax.url, $(c.selectors.contactForm).serialize(), sendEmailCallback, c.ajax.dataType);
-                    }
-                },
-                sendEmailCallback = function (data) {
-                    $(c.selectors.contactFormContainer).html(data);
-                },
-                eventHandlers = function () {
-                    clickSendButton();
-                },
-                init = function () {
-                    eventHandlers();
-                };
-            return {
-                init: init
-            }
-        }(constants, properties));
-    return methods;
-}(jQuery));
-
-lucidia.components.navigation = (function ($) {
-    var constants = {
-
-    },
-        properties = {
-
-        },
-        methods = (function (c, p) {
-            var testFunction = function () {
-                console.log("this is a test function");
-            },
-                init = function () {
-                };
-            return {
-                init: init
-            };
-        }(constants, properties));
-    return methods;
-}(jQuery));
 lucidia.components.partners = (function ($) {
     var constants = {
         selectors: {
@@ -267,6 +248,25 @@ lucidia.components.partners = (function ($) {
                 },
                 init = function () {
                     eventHandlers();
+                };
+            return {
+                init: init
+            };
+        }(constants, properties));
+    return methods;
+}(jQuery));
+lucidia.components.navigation = (function ($) {
+    var constants = {
+
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var testFunction = function () {
+                console.log("this is a test function");
+            },
+                init = function () {
                 };
             return {
                 init: init

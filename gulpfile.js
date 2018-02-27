@@ -1,4 +1,5 @@
-﻿'use strict';
+﻿/// <binding ProjectOpened='default' />
+'use strict';
 var fs = require('fs');
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
