@@ -1,5 +1,3 @@
-using System;
-
 namespace LucidiaIT.Models
 {
     public class ErrorViewModel

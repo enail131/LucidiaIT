@@ -1,9 +1,5 @@
 ﻿using LucidiaIT.Interfaces;
 using LucidiaIT.Models.HomeViewModels;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 

@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LucidiaIT.Models;
 using LucidiaIT.Models.EmployeeModels;
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using LucidiaIT.Services;
 using LucidiaIT.Interfaces;
 
 namespace LucidiaIT.Controllers

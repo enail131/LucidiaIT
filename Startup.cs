@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
@@ -12,7 +8,6 @@ using LucidiaIT.Data;
 using LucidiaIT.Models;
 using LucidiaIT.Services;
 using LucidiaIT.Interfaces;
-using Microsoft.Extensions.Logging;
 
 namespace LucidiaIT
 {
