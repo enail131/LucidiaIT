@@ -8,6 +8,8 @@ using LucidiaIT.Data;
 using LucidiaIT.Models;
 using LucidiaIT.Services;
 using LucidiaIT.Interfaces;
+using LucidiaIT.Models.EmployeeModels;
+using LucidiaIT.Models.PartnerModels;
 
 namespace LucidiaIT
 {
@@ -41,6 +43,10 @@ namespace LucidiaIT
             services.AddTransient<ISmtpBuilder, SmtpBuilder>();
             services.AddTransient<IUploadImage, UploadImage>();
             services.AddTransient<IMessageBuilder, MessageBuilder>();
+
+            services.AddScoped<IDataService<Employee>, EmployeeService>();
+            services.AddScoped<IDataService<Partner>, PartnerService>();
+
             services.AddSingleton(Configuration);
 
             services.AddMvc();

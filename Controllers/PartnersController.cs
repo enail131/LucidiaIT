@@ -13,13 +13,13 @@ namespace LucidiaIT.Controllers
 {
     public class PartnersController : Controller
     {
-        private readonly PartnerContext _context;
+        private readonly IDataService<Partner> _context;
         private readonly IUploadImage _uploadImage;
         private readonly IEmailSender _emailSender;
         private readonly IMessageBuilder _messageBuilder;
 
         public PartnersController(
-            PartnerContext context,
+            IDataService<Partner> context,
             IUploadImage uploadImage,
             IEmailSender emailSender,
             IMessageBuilder messageBuilder)
@@ -32,13 +32,13 @@ namespace LucidiaIT.Controllers
 
         public async Task<IActionResult> Partners()
         {
-            return View(await _context.Partner.ToListAsync());
+            return View(await _context.GetListAsync());
         }
 
         // GET: Partners
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Partner.ToListAsync());
+            return View(await _context.GetListAsync());
         }
 
         // GET: Partners/Details/5
@@ -49,8 +49,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var partner = await _context.Partner
-                .SingleOrDefaultAsync(m => m.ID == id);
+            var partner = await _context.GetDataObjectAsync(id);
             if (partner == null)
             {
                 return NotFound();
@@ -77,8 +76,7 @@ namespace LucidiaIT.Controllers
                 try
                 {
                     await _uploadImage.UploadPartnerImages(partner, files);
-                    _context.Add(partner);
-                    await _context.SaveChangesAsync();
+                    await _context.CreateAsync(partner);
                     return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
                 }
                 catch (Exception e)
@@ -98,7 +96,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var partner = await _context.Partner.SingleOrDefaultAsync(m => m.ID == id);
+            var partner = await _context.GetDataObjectAsync(id);
             if (partner == null)
             {
                 return NotFound();
@@ -122,8 +120,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    _context.Update(partner);
-                    await _context.SaveChangesAsync();
+                    await _context.EditAsync(partner);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -149,8 +146,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var partner = await _context.Partner
-                .SingleOrDefaultAsync(m => m.ID == id);
+            var partner = await _context.GetDataObjectAsync(id);
             if (partner == null)
             {
                 return NotFound();
@@ -164,15 +160,14 @@ namespace LucidiaIT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var partner = await _context.Partner.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Partner.Remove(partner);
-            await _context.SaveChangesAsync();
+            var partner = await _context.GetDataObjectAsync(id);
+            await _context.DeleteAsync(partner);
             return RedirectToAction(nameof(Index));
         }
 
         private bool PartnerExists(int id)
         {
-            return _context.Partner.Any(e => e.ID == id);
+            return _context.DataObjectExists(id);
         }
     }
 }

@@ -13,13 +13,13 @@ namespace LucidiaIT.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly EmployeeContext _context;
+        private readonly IDataService<Employee> _context;
         private readonly IUploadImage _uploadImage;
         private readonly IEmailSender _emailSender;
         private readonly IMessageBuilder _messageBuilder;
 
         public EmployeesController(
-            EmployeeContext context, 
+            IDataService<Employee> context, 
             IUploadImage uploadImage, 
             IEmailSender emailSender,
             IMessageBuilder messageBuilder)
@@ -33,12 +33,12 @@ namespace LucidiaIT.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            return View(await _context.GetListAsync());
         }
 
         public async Task<IActionResult> About()
         {
-            return View(await _context.Employee.ToListAsync());
+            return View(await _context.GetListAsync());
         }
 
         // GET: Employees/Details/5
@@ -49,8 +49,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .SingleOrDefaultAsync(m => m.ID == id);
+            var employee = await _context.GetDataObjectAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -77,8 +76,7 @@ namespace LucidiaIT.Controllers
                 try
                 {
                     await _uploadImage.UploadEmployeeImages(employee, files);
-                    _context.Add(employee);
-                    await _context.SaveChangesAsync();
+                    await _context.CreateAsync(employee);
                     return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
                 }
                 catch (Exception e)
@@ -101,7 +99,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.SingleOrDefaultAsync(m => m.ID == id);
+            var employee = await _context.GetDataObjectAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -125,8 +123,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
+                    await _context.EditAsync(employee);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -152,8 +149,7 @@ namespace LucidiaIT.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .SingleOrDefaultAsync(m => m.ID == id);
+            var employee = await _context.GetDataObjectAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -167,15 +163,14 @@ namespace LucidiaIT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employee.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Employee.Remove(employee);
-            await _context.SaveChangesAsync();
+            var employee = await _context.GetDataObjectAsync(id);
+            await _context.DeleteAsync(employee);
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeeExists(int id)
         {
-            return _context.Employee.Any(e => e.ID == id);
+            return _context.DataObjectExists(id);
         }
     }
 }
