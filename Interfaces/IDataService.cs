@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LucidiaIT.Interfaces
 {
-    public interface IDataService<T>
+    public interface IDataService<T> : IDisposable where T : IIdentifiable
     {
         Task<List<T>> GetListAsync();
         Task<T> GetDataObjectAsync(int? id);

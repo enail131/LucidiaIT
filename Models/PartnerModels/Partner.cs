@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LucidiaIT.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace LucidiaIT.Models.PartnerModels
 {
-    public class Partner
+    public class Partner : Identifiable
     {
         [Key]
-        public int ID { get; set; }
+        public override int ID { get; set; }
 
         [Required]
         [Display(Name = "Name")]

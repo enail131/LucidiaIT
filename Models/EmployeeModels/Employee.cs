@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LucidiaIT.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace LucidiaIT.Models.EmployeeModels
 {
-    public class Employee
+    public class Employee : Identifiable
     {
         [Key]
-        public int ID { get; set; }
+        public override int ID { get; set; }
 
         [Required]
         [Display(Name = "First name")]
