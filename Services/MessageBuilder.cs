@@ -9,11 +9,8 @@ namespace LucidiaIT.Services
     public class MessageBuilder : IMessageBuilder
     {
         private readonly IConfiguration _configuration;
-        
-        public MessageBuilder(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+
+        public MessageBuilder(IConfiguration configuration) => _configuration = configuration;
 
         public MailMessage BuildErrorMessage(Exception e)
         {

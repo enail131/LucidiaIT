@@ -115,6 +115,9 @@
   #footer-container #copyright {
     clear: both; }
 
+#register-container {
+  float: right; }
+
 #page-jumbotron .jumbotron {
   background: url("/images/water.jpg") no-repeat center;
   background-size: cover;
@@ -136,9 +139,6 @@
     right: 0;
     top: 30%;
     background: rgba(0, 0, 0, 0.4); } }
-
-#register-container {
-  float: right; }
 
 #navigation {
   z-index: 1;

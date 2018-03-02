@@ -18,19 +18,10 @@ namespace LucidiaIT.Services
             _client = _smtpBuilder.GetSmtpClient();
         }
 
-        public Task SendEmailAsync(string email, string subject, string message)
-        {
-            return Task.CompletedTask;
-        }
+        public Task SendEmailAsync(string email, string subject, string message) => Task.CompletedTask;
 
-        public void SendEmail(ContactUsViewModel contact, MailMessage message) 
-        {
-             _client.Send(message);
-        }
+        public void SendEmail(MailMessage message) => _client.Send(message);
 
-        public void SendEmail(MailMessage message)
-        {
-            _client.Send(message);
-        }
+        public void SendEmail(ContactUsViewModel contact, MailMessage message) => _client.Send(message);
     }
 }

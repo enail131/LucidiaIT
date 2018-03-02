@@ -18,10 +18,7 @@ namespace LucidiaIT.Services
     {
         private readonly IConfiguration _configuration;
 
-        public StorageService(IConfiguration Configuration)
-        {
-            _configuration = Configuration;
-        }
+        public StorageService(IConfiguration Configuration) => _configuration = Configuration;
 
         public async Task UploadImages(IEnumerable<IFormFile> files, Employee employee = null, Partner partner = null)
         {
@@ -48,33 +45,30 @@ namespace LucidiaIT.Services
             }
         }
 
-        public async Task DeleteImages(string containerReference, string imagePath)
+        public async Task DeleteImages(string containerReferenceName, string imagePath)
         {
-            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReference);
+            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReferenceName);
             string fileName = ParseImagePath(imagePath);
             CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(fileName);
             await blockBlob.DeleteAsync();
         }
 
-        private string ParseImagePath(string imagePath)
-        {
-            return imagePath.Substring((imagePath.LastIndexOf("/") + 1));
-        }
+        private string ParseImagePath(string imagePath) => imagePath.Substring((imagePath.LastIndexOf("/") + 1));
 
-        private CloudBlobContainer GetBlobContainerReference(string containerReference)
+        private CloudBlobContainer GetBlobContainerReference(string containerReferenceName)
         {
             string accountName = _configuration["StorageSettings:AccountName"];
             string accountKey = _configuration["StorageSettings:AccountKey"];
             StorageCredentials storageCredentials = new StorageCredentials(accountName, accountKey);
             CloudStorageAccount storageAccount = new CloudStorageAccount(storageCredentials, true);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerReference);
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerReferenceName);
             return blobContainer;
         }
 
-        private async Task StoreImage(string containerReference, string fileName, IFormFile file)
+        private async Task StoreImage(string containerReferenceName, string fileName, IFormFile file)
         {
-            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReference);
+            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReferenceName);
             await blobContainer.CreateIfNotExistsAsync();
             CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(fileName);
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());

@@ -9,10 +9,7 @@ namespace LucidiaIT.Services
     {
         private readonly IConfiguration _configuration;
 
-        public SmtpBuilder (IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        public SmtpBuilder(IConfiguration configuration) => _configuration = configuration;
 
         public SmtpClient GetSmtpClient() => new SmtpClient(_configuration["EmailSettings:Host"], Int32.Parse(_configuration["EmailSettings:Port"]))
         {
