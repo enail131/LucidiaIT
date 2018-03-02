@@ -8,7 +8,7 @@ namespace LucidiaIT.Interfaces
 {
     public interface IStorageService
     {
-        Task UploadPartnerImages(Partner partner, IEnumerable<IFormFile> files);
-        Task UploadEmployeeImages(Employee employee, IEnumerable<IFormFile> files);
+        Task UploadImages(IEnumerable<IFormFile> files, Employee employee = null, Partner partner = null);
+        Task DeleteImages(string containerReference, string imagePath);
     }
 }

@@ -20,27 +20,63 @@ namespace LucidiaIT.Services
 
         public StorageService(IConfiguration Configuration)
         {
-            _configuration = Configuration;            
+            _configuration = Configuration;
         }
 
-        private CloudStorageAccount GetStorageAccount()
+        public async Task UploadImages(IEnumerable<IFormFile> files, Employee employee = null, Partner partner = null)
+        {
+            string containerName = (employee != null) ? "employee" : "partners";
+            int i = 0;
+            foreach (var file in files)
+            {
+                if ((file != null) && (file.Length > 0))
+                {
+                    string fileName = Guid.NewGuid().ToString().Replace("-", "") +
+                                    Path.GetExtension(file.FileName);
+                    string imageUrl = BuildImageUrl(containerName, fileName);
+                    await StoreImage(containerName, fileName, file);
+                    if (containerName.Equals("employee"))
+                    {
+                        SetEmployeeImages(employee, imageUrl, i);
+                    }
+                    else
+                    {
+                        partner.Logo = imageUrl;
+                    }
+                    i++;
+                }
+            }
+        }
+
+        public async Task DeleteImages(string containerReference, string imagePath)
+        {
+            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReference);
+            string fileName = ParseImagePath(imagePath);
+            CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(fileName);
+            await blockBlob.DeleteAsync();
+        }
+
+        private string ParseImagePath(string imagePath)
+        {
+            return imagePath.Substring((imagePath.LastIndexOf("/") + 1));
+        }
+
+        private CloudBlobContainer GetBlobContainerReference(string containerReference)
         {
             string accountName = _configuration["StorageSettings:AccountName"];
             string accountKey = _configuration["StorageSettings:AccountKey"];
             StorageCredentials storageCredentials = new StorageCredentials(accountName, accountKey);
             CloudStorageAccount storageAccount = new CloudStorageAccount(storageCredentials, true);
-            return storageAccount;
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerReference);
+            return blobContainer;
         }
 
         private async Task StoreImage(string containerReference, string fileName, IFormFile file)
         {
-            CloudStorageAccount storageAccount = GetStorageAccount();
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerReference);
+            CloudBlobContainer blobContainer = GetBlobContainerReference(containerReference);
             await blobContainer.CreateIfNotExistsAsync();
-
             CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(fileName);
-            
             await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
         }
 
@@ -55,47 +91,15 @@ namespace LucidiaIT.Services
             return sb.ToString();
         }
 
-        public async Task UploadEmployeeImages(Employee employee, IEnumerable<IFormFile> files)
+        private void SetEmployeeImages(Employee employee, string imageUrl, int index)
         {
-            var containerName = "employee";
-            int i = 0;
-            foreach (var file in files)
+            if (index == 0)
             {
-                if (file != null && file.Length > 0)
-                {
-                    var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                                    Path.GetExtension(file.FileName);                    
-                    await StoreImage(containerName, fileName, file);
-                    if (i == 0)
-                    {
-                        employee.InitialImage = BuildImageUrl(containerName, fileName);
-                    }
-                    else if (i == 1)
-                    {
-                        employee.HoverImage = BuildImageUrl(containerName, fileName);
-                    }
-                }
-                i++;
+                employee.InitialImage = imageUrl;
             }
-        }
-
-        public  async Task UploadPartnerImages(Partner partner, IEnumerable<IFormFile> files)
-        {
-            string containerName = "partners";
-            int i = 0;
-            foreach (var file in files)
+            else
             {
-                if (file != null && file.Length > 0)
-                {
-                    var fileName = Guid.NewGuid().ToString().Replace("-", "") +
-                                    Path.GetExtension(file.FileName);
-                    await StoreImage(containerName, fileName, file);
-                    if (i == 0)
-                    {
-                        partner.Logo = BuildImageUrl(containerName, fileName);
-                    }
-                }
-                i++;
+                employee.HoverImage = imageUrl;
             }
         }
     }

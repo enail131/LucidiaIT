@@ -6,26 +6,30 @@ using Microsoft.EntityFrameworkCore;
 using LucidiaIT.Models.EmployeeModels;
 using Microsoft.AspNetCore.Http;
 using LucidiaIT.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace LucidiaIT.Controllers
 {
     public class EmployeesController : Controller
     {
         private readonly IDataService<Employee> _context;
-        private readonly IStorageService _uploadImage;
+        private readonly IStorageService _storage;
         private readonly IEmailSender _emailSender;
         private readonly IMessageBuilder _messageBuilder;
+        private readonly IConfiguration _config;
 
         public EmployeesController(
             IDataService<Employee> context, 
-            IStorageService uploadImage, 
+            IStorageService storage, 
             IEmailSender emailSender,
-            IMessageBuilder messageBuilder)
+            IMessageBuilder messageBuilder,
+            IConfiguration config)
         {
             _context = context;
-            _uploadImage = uploadImage;
+            _storage = storage;
             _emailSender = emailSender;
             _messageBuilder = messageBuilder;
+            _config = config;
         }
 
         // GET: Employees
@@ -73,7 +77,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    await _uploadImage.UploadEmployeeImages(employee, files);
+                    await _storage.UploadImages(files, employee, null);
                     await _context.CreateAsync(employee);
                     return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
                 }
@@ -161,7 +165,10 @@ namespace LucidiaIT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.GetDataObjectAsync(id);
+            Employee employee = await _context.GetDataObjectAsync(id);
+            string containerReference = _config["StorageSettings:EmployeeContainer"];
+            await _storage.DeleteImages(containerReference, employee.InitialImage);
+            await _storage.DeleteImages(containerReference, employee.HoverImage);
             await _context.DeleteAsync(employee);
             return RedirectToAction(nameof(Index));
         }

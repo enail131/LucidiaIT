@@ -6,26 +6,30 @@ using Microsoft.EntityFrameworkCore;
 using LucidiaIT.Models.PartnerModels;
 using Microsoft.AspNetCore.Http;
 using LucidiaIT.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace LucidiaIT.Controllers
 {
     public class PartnersController : Controller
     {
         private readonly IDataService<Partner> _context;
-        private readonly IStorageService _uploadImage;
+        private readonly IStorageService _storage;
         private readonly IEmailSender _emailSender;
         private readonly IMessageBuilder _messageBuilder;
+        private readonly IConfiguration _config;
 
         public PartnersController(
             IDataService<Partner> context,
-            IStorageService uploadImage,
+            IStorageService storage,
             IEmailSender emailSender,
-            IMessageBuilder messageBuilder)
+            IMessageBuilder messageBuilder,
+            IConfiguration config)
         {
             _context = context;
-            _uploadImage = uploadImage;
+            _storage = storage;
             _emailSender = emailSender;
             _messageBuilder = messageBuilder;
+            _config = config;
         }
 
         public async Task<IActionResult> Partners()
@@ -73,7 +77,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    await _uploadImage.UploadPartnerImages(partner, files);
+                    await _storage.UploadImages(files, null, partner);
                     await _context.CreateAsync(partner);
                     return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
                 }
@@ -159,6 +163,7 @@ namespace LucidiaIT.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var partner = await _context.GetDataObjectAsync(id);
+            await _storage.DeleteImages(_config["StorageSettings:PartnersContainer"], partner.Logo);
             await _context.DeleteAsync(partner);
             return RedirectToAction(nameof(Index));
         }
