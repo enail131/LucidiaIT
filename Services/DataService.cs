@@ -1,5 +1,4 @@
-﻿using LucidiaIT.Data;
-using LucidiaIT.Interfaces;
+﻿using LucidiaIT.Interfaces;
 using LucidiaIT.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

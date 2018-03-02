@@ -1,5 +1,4 @@
 ﻿using LucidiaIT.Interfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace LucidiaIT.Models
 {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using LucidiaIT.Models;
 using LucidiaIT.Models.EmployeeModels;
 using Microsoft.AspNetCore.Http;
 using LucidiaIT.Interfaces;
@@ -14,13 +12,13 @@ namespace LucidiaIT.Controllers
     public class EmployeesController : Controller
     {
         private readonly IDataService<Employee> _context;
-        private readonly IUploadImage _uploadImage;
+        private readonly IStorageService _uploadImage;
         private readonly IEmailSender _emailSender;
         private readonly IMessageBuilder _messageBuilder;
 
         public EmployeesController(
             IDataService<Employee> context, 
-            IUploadImage uploadImage, 
+            IStorageService uploadImage, 
             IEmailSender emailSender,
             IMessageBuilder messageBuilder)
         {

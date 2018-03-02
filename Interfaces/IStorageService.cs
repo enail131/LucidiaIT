@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LucidiaIT.Interfaces
 {
-    public interface IUploadImage
+    public interface IStorageService
     {
         Task UploadPartnerImages(Partner partner, IEnumerable<IFormFile> files);
         Task UploadEmployeeImages(Employee employee, IEnumerable<IFormFile> files);

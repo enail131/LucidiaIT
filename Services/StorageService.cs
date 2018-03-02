@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace LucidiaIT.Services
 {
-    public class UploadImage : IUploadImage
+    public class StorageService : IStorageService
     {
         private readonly IConfiguration _configuration;
 
-        public UploadImage(IConfiguration Configuration)
+        public StorageService(IConfiguration Configuration)
         {
             _configuration = Configuration;            
         }

@@ -1,7 +1,5 @@
-﻿using LucidiaIT.Data;
-using LucidiaIT.Models;
+﻿using LucidiaIT.Models;
 using LucidiaIT.Models.PartnerModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace LucidiaIT.Services
 {
