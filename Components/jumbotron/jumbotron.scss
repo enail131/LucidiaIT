@@ -11,20 +11,24 @@
 
     #jumbotron-content {
         position: absolute;
+        background: rgba(0, 0, 0, .4);
+        color: #D7D7D7;
         right: 19%;
         top: 25%;
 
         h2 {
             font-size: 40px;
         }
+
+        p {
+            font-size: 16px;
+        }
     }
 
     @media (max-width: $bp-xs) {
         #jumbotron-content {
-            color: #D7D7D7;
             right: 0;
             top: 30%;
-            background: rgba(0, 0, 0, .4);
         }
     }
 }

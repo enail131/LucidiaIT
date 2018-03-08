@@ -35,12 +35,15 @@
     <div class="row">
         @foreach (var partner in Model)
         {
-            <a href="@partner.URL" class="partner col-sm-12 col-md-4" style="background: url('@partner.Logo') no-repeat center;">
-                <div class="partner-info">
-                    <h2>@partner.Name</h2>
-                    <p>@partner.Description</p>
-                </div>
-            </a>
+            <div class="partner-container col-sm-12 col-md-4">
+                <a href="@partner.URL" class="partner col-xs-12">
+                    <img src="@partner.Logo" class="partner-logo" alt="@partner.Name company logo"/>
+                    <div class="partner-info">
+                        <h2>@partner.Name</h2>
+                        <p>@partner.Description</p>
+                    </div>
+                </a>
+            </div>
         }
     </div>    
 </div>

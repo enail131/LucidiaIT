@@ -15,24 +15,24 @@ namespace LucidiaIT
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public IConfiguration _config { get; }
 
-        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration config)
+        {
+            _config = config;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<EmployeeContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("EmployeeContext")));
+                options.UseSqlServer(_config.GetConnectionString("EmployeeContext")));
 
             services.AddDbContext<PartnerContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("PartnerContext")));
+                options.UseSqlServer(_config.GetConnectionString("PartnerContext")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -47,7 +47,7 @@ namespace LucidiaIT
             services.AddScoped<IDataService<Employee>, EmployeeService>();
             services.AddScoped<IDataService<Partner>, PartnerService>();
 
-            services.AddSingleton(Configuration);
+            services.AddSingleton(_config);
 
             services.AddMvc();
         }

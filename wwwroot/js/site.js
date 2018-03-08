@@ -71,7 +71,6 @@ lucidia.components.contactUs = (function ($) {
         }(constants, properties));
     return methods;
 }(jQuery));
-
 lucidia.components.employee = (function ($) {
     var constants = {
         ajax: {
@@ -173,6 +172,7 @@ lucidia.components.navigation = (function ($) {
         }(constants, properties));
     return methods;
 }(jQuery));
+
 lucidia.components.partners = (function ($) {
     var constants = {
         selectors: {
