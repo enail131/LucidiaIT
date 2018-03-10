@@ -20,12 +20,11 @@
     </div>
 }
 
-<h2>Partners</h2>
-
 @if (SignInManager.IsSignedIn(User))
 {
+    <h2>Partners</h2>
     <p>
-        <a asp-controller="Partners" asp-action="Create">Create New</a> | 
+        <a asp-controller="Partners" asp-action="Create">Create New</a> |
         <a asp-controller="Partners" asp-action="Index">Partners List</a>
     </p>
 }
@@ -35,16 +34,16 @@
     <div class="row">
         @foreach (var partner in Model)
         {
-            <div class="partner-container col-sm-12 col-md-4">
-                <a href="@partner.URL" class="partner col-xs-12">
-                    <img src="@partner.Logo" class="partner-logo" alt="@partner.Name company logo"/>
+            <div class="partner-container col-xs-12 col-md-3">
+                <a href="@partner.URL" class="partner col-xs-12" target="_blank">
+                    <img src="@partner.Logo" class="partner-logo" alt="@partner.Name company logo" />
                     <div class="partner-info">
                         <h2>@partner.Name</h2>
-                        <p>@partner.Description</p>
+                        <p>@partner.URL</p>
                     </div>
                 </a>
             </div>
         }
-    </div>    
+    </div>
 </div>
 

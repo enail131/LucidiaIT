@@ -5,6 +5,10 @@
     min-height: 0;
     margin-bottom: 0;
 
+    .navbar-header {
+        float: right;
+    }
+
     .navbar-nav {
         float: none;
 
@@ -41,7 +45,7 @@
         width: 240px;
         position: absolute;
         top: 150px;
-        left: 10%;
+        right: 10%;
     }
 
     @media (max-width: $bp-xs) {
@@ -56,6 +60,9 @@
         }
 
         .navbar-header {
+            clear: both;
+            float: left;
+
             .navbar-toggle {
                 .icon-bar {
                     height: 4px;
@@ -68,9 +75,10 @@
 
             #logo-circle {
                 width: 85%;
+
                 .navbar-brand {
                     margin-top: 0;
-                    
+
                     #header-logo {
                         height: 70px;
                     }
@@ -90,7 +98,7 @@
 
     @media (min-width: 1400px) {
         .trapazoid {
-            left: 15%;
+            right: 15%;
         }
     }
 

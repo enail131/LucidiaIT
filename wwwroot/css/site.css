@@ -12,6 +12,57 @@
   .body-content {
     margin-top: 75px; } }
 
+#about-us {
+  text-align: center;
+  clear: both; }
+  #about-us #about-us-paragraph {
+    margin-bottom: 55px; }
+  #about-us h2 {
+    margin-bottom: 45px; }
+  #about-us p {
+    text-align: left; }
+  #about-us img {
+    float: right;
+    height: 450px;
+    width: 50%;
+    padding: 0 10px; }
+  #about-us .people-img-hover, #about-us .people-img {
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-size: cover; }
+  #about-us .people-img-hover {
+    display: none; }
+  #about-us .people-img {
+    display: block; }
+  #about-us .people-img-container:hover .people-img {
+    display: none; }
+  #about-us .people-img-container:hover .people-img-hover {
+    display: block; }
+  #about-us .people-bio {
+    margin-bottom: 45px; }
+
+#footer-container {
+  background: black;
+  color: #337ab7;
+  margin-top: 45px; }
+  #footer-container #footer-nav {
+    float: right;
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    margin: 25px 0; }
+    #footer-container #footer-nav li {
+      margin: 5px 0; }
+      #footer-container #footer-nav li a:hover {
+        color: white; }
+  #footer-container .footer-brand {
+    float: left;
+    margin-top: 25px; }
+  #footer-container #copyright {
+    clear: both; }
+
 #contact-container #contact-form_btn {
   margin-top: 10px;
   margin-right: 30px; }
@@ -64,59 +115,11 @@
   margin-top: 25px;
   float: right; }
 
-#about-us {
-  text-align: center;
-  clear: both; }
-  #about-us #about-us-paragraph {
-    margin-bottom: 55px; }
-  #about-us h2 {
-    margin-bottom: 45px; }
-  #about-us p {
-    text-align: left; }
-  #about-us img {
-    float: right;
-    height: 450px;
-    width: 50%;
-    padding: 0 10px; }
-  #about-us .people-img-hover, #about-us .people-img {
-    text-align: center;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-size: cover; }
-  #about-us .people-img-hover {
-    display: none; }
-  #about-us .people-img {
-    display: block; }
-  #about-us .people-img-container:hover .people-img {
-    display: none; }
-  #about-us .people-img-container:hover .people-img-hover {
-    display: block; }
-  #about-us .people-bio {
-    margin-bottom: 45px; }
-
-#footer-container {
-  background: black;
-  color: #337ab7;
-  margin-top: 45px; }
-  #footer-container #footer-nav {
-    float: right;
-    list-style-type: none;
-    padding: 0;
-    display: inline-block;
-    margin: 25px 0; }
-    #footer-container #footer-nav li {
-      margin: 5px 0; }
-      #footer-container #footer-nav li a:hover {
-        color: white; }
-  #footer-container .footer-brand {
-    float: left;
-    margin-top: 25px; }
-  #footer-container #copyright {
-    clear: both; }
+#register-container {
+  float: right; }
 
 #page-jumbotron .jumbotron {
-  background: url("/images/water.jpg") no-repeat center;
+  background: url("/images/LucidiaHome.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
   min-height: 540px;
@@ -127,7 +130,7 @@
   position: absolute;
   background: rgba(0, 0, 0, 0.4);
   color: #D7D7D7;
-  right: 19%;
+  left: 19%;
   top: 25%; }
   #page-jumbotron #jumbotron-content h2 {
     font-size: 40px; }
@@ -145,6 +148,8 @@
   text-align: center;
   min-height: 0;
   margin-bottom: 0; }
+  #navigation .navbar-header {
+    float: right; }
   #navigation .navbar-nav {
     float: none; }
     #navigation .navbar-nav li {
@@ -167,7 +172,7 @@
     width: 240px;
     position: absolute;
     top: 150px;
-    left: 10%; }
+    right: 10%; }
   @media (max-width: 768px) {
     #navigation {
       float: none;
@@ -175,18 +180,21 @@
       #navigation .navbar-nav li {
         border-bottom: 1px solid;
         background: black; }
-      #navigation .navbar-header .navbar-toggle .icon-bar {
-        height: 4px;
-        width: 25px;
-        border-radius: 4px;
-        background: #000;
-        border: 1px solid #000; }
-      #navigation .navbar-header #logo-circle {
-        width: 85%; }
-        #navigation .navbar-header #logo-circle .navbar-brand {
-          margin-top: 0; }
-          #navigation .navbar-header #logo-circle .navbar-brand #header-logo {
-            height: 70px; }
+      #navigation .navbar-header {
+        clear: both;
+        float: left; }
+        #navigation .navbar-header .navbar-toggle .icon-bar {
+          height: 4px;
+          width: 25px;
+          border-radius: 4px;
+          background: #000;
+          border: 1px solid #000; }
+        #navigation .navbar-header #logo-circle {
+          width: 85%; }
+          #navigation .navbar-header #logo-circle .navbar-brand {
+            margin-top: 0; }
+            #navigation .navbar-header #logo-circle .navbar-brand #header-logo {
+              height: 70px; }
       #navigation .trapazoid {
         border-bottom: none;
         border-left: none;
@@ -196,7 +204,7 @@
         position: initial; } }
   @media (min-width: 1400px) {
     #navigation .trapazoid {
-      left: 15%; } }
+      right: 15%; } }
   #navigation .navbar-brand {
     margin-top: 175px;
     margin-left: 25px; }
@@ -282,7 +290,7 @@
   margin-bottom: 10px; }
 
 #partners-page .partner {
-  height: 225px;
+  height: 150px;
   position: relative;
   overflow: hidden;
   padding: 0; }
@@ -295,7 +303,7 @@
 #partners-page .partner-info {
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
-  top: 145px;
+  top: 150px;
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: .5s;
@@ -312,6 +320,3 @@
     left: 40px; }
   #partners-page #slider__right-arrow {
     right: 35px; } }
-
-#register-container {
-  float: right; }
