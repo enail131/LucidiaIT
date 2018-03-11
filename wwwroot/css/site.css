@@ -43,26 +43,6 @@
   #about-us .people-bio {
     margin-bottom: 45px; }
 
-#footer-container {
-  background: black;
-  color: #337ab7;
-  margin-top: 45px; }
-  #footer-container #footer-nav {
-    float: right;
-    list-style-type: none;
-    padding: 0;
-    display: inline-block;
-    margin: 25px 0; }
-    #footer-container #footer-nav li {
-      margin: 5px 0; }
-      #footer-container #footer-nav li a:hover {
-        color: white; }
-  #footer-container .footer-brand {
-    float: left;
-    margin-top: 25px; }
-  #footer-container #copyright {
-    clear: both; }
-
 #contact-container #contact-form_btn {
   margin-top: 10px;
   margin-right: 30px; }
@@ -115,11 +95,28 @@
   margin-top: 25px;
   float: right; }
 
-#register-container {
-  float: right; }
+#footer-container {
+  background: black;
+  color: #337ab7;
+  margin-top: 45px; }
+  #footer-container #footer-nav {
+    float: right;
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    margin: 25px 0; }
+    #footer-container #footer-nav li {
+      margin: 5px 0; }
+      #footer-container #footer-nav li a:hover {
+        color: white; }
+  #footer-container .footer-brand {
+    float: left;
+    margin-top: 25px; }
+  #footer-container #copyright {
+    clear: both; }
 
 #page-jumbotron .jumbotron {
-  background: url("/images/LucidiaHome.jpg") no-repeat center;
+  background: url("/images/worldhands.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed;
   min-height: 540px;
@@ -141,6 +138,9 @@
   #page-jumbotron #jumbotron-content {
     right: 0;
     top: 30%; } }
+
+#register-container {
+  float: right; }
 
 #navigation {
   z-index: 1;
