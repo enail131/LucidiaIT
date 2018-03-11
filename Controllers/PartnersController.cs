@@ -83,7 +83,7 @@ namespace LucidiaIT.Controllers
                 }
                 catch (Exception e)
                 {
-                    _emailSender.SendEmail(_messageBuilder.BuildErrorMessage(e));
+                    await _emailSender.SendEmail(_messageBuilder.BuildErrorMessage(e));
                     return PartialView("~/Views/Shared/_CreateFailed.cshtml");
                 }
             }

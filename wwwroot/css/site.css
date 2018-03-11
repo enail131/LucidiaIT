@@ -139,9 +139,6 @@
     right: 0;
     top: 30%; } }
 
-#register-container {
-  float: right; }
-
 #navigation {
   z-index: 1;
   height: 0;
@@ -208,6 +205,9 @@
   #navigation .navbar-brand {
     margin-top: 175px;
     margin-left: 25px; }
+
+#register-container {
+  float: right; }
 
 #partners {
   position: relative; }

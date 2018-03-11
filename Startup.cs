@@ -40,9 +40,9 @@ namespace LucidiaIT
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddTransient<ISmtpBuilder, SmtpBuilder>();
             services.AddTransient<IStorageService, StorageService>();
             services.AddTransient<IMessageBuilder, MessageBuilder>();
+            services.AddTransient<ISendGridBuilder, SendGridBuilder>();
 
             services.AddScoped<IDataService<Employee>, EmployeeService>();
             services.AddScoped<IDataService<Partner>, PartnerService>();

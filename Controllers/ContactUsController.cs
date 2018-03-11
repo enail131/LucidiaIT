@@ -2,6 +2,7 @@
 using LucidiaIT.Models.HomeViewModels;
 using LucidiaIT.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace LucidiaIT.Controllers
 {
@@ -23,13 +24,13 @@ namespace LucidiaIT.Controllers
             return View();
         }
 
-        public IActionResult SendEmail(ContactUsViewModel contact)
+        public async Task<IActionResult> SendEmail(ContactUsViewModel contact)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _emailSender.SendEmail(contact, _messageBuilder.BuildContactMessage(contact));
+                    await _emailSender.SendEmail(contact, _messageBuilder.BuildContactMessage(contact));
                     return PartialView("_Success", contact);
                 }
                 catch

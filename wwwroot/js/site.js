@@ -29,6 +29,7 @@ var lucidia = {
         error: []
     }
 };
+
 lucidia.components.contactUs = (function ($) {
     var constants = {
         selectors: {
@@ -153,7 +154,25 @@ lucidia.components.employee = (function ($) {
     return methods;
 }(jQuery));
 
+lucidia.components.navigation = (function ($) {
+    var constants = {
 
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var testFunction = function () {
+                console.log("this is a test function");
+            },
+                init = function () {
+                };
+            return {
+                init: init
+            };
+        }(constants, properties));
+    return methods;
+}(jQuery));
 lucidia.components.partners = (function ($) {
     var constants = {
         selectors: {
@@ -248,25 +267,6 @@ lucidia.components.partners = (function ($) {
                 },
                 init = function () {
                     eventHandlers();
-                };
-            return {
-                init: init
-            };
-        }(constants, properties));
-    return methods;
-}(jQuery));
-lucidia.components.navigation = (function ($) {
-    var constants = {
-
-    },
-        properties = {
-
-        },
-        methods = (function (c, p) {
-            var testFunction = function () {
-                console.log("this is a test function");
-            },
-                init = function () {
                 };
             return {
                 init: init

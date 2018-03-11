@@ -1,6 +1,7 @@
 ﻿using LucidiaIT.Interfaces;
 using LucidiaIT.Models.HomeViewModels;
 using Microsoft.Extensions.Configuration;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Net.Mail;
 
@@ -12,28 +13,25 @@ namespace LucidiaIT.Services
 
         public MessageBuilder(IConfiguration configuration) => _configuration = configuration;
 
-        public MailMessage BuildErrorMessage(Exception e)
+        public SendGridMessage BuildErrorMessage(Exception e)
         {
-            MailMessage message = BuildMailMessage();
-            message.Subject = "New error reported";
-            message.Body = $"Error message: {e.Message} \n\n Error stack: {e.StackTrace}";
-            return message;
+            string subject = "New error reported";
+            string body = $"Error message: {e.Message} \n\n Error stack: {e.StackTrace}";
+            return BuildEmailMessage(subject, body);
         }
 
-        public MailMessage BuildContactMessage(ContactUsViewModel contact)
+        public SendGridMessage BuildContactMessage(ContactUsViewModel contact)
         {
-            MailMessage message = BuildMailMessage();
-            message.Subject = "New contact message";
-            message.Body = $"Name: {contact.Name} \n\nEmail: {contact.EmailAddress} \n\nMessage: \n{contact.Message}";
-            return message;
+            var subject = "New contact message";
+            var body = $"Name: {contact.Name} \n\nEmail: {contact.EmailAddress} \n\nMessage: \n{contact.Message}";
+            return BuildEmailMessage(subject, body);
         }
-
-        private MailMessage BuildMailMessage()
+        
+        private SendGridMessage BuildEmailMessage(string subject, string body)
         {
-            MailMessage message = new MailMessage();
-            message.To.Add(_configuration["EmailSettings:EmailAddress"]);
-            message.From = new MailAddress(_configuration["EmailSettings:EmailAddress"], _configuration["EmailSettings:Title"]);
-            return message;
+            EmailAddress from = new EmailAddress(_configuration["EmailSettings:EmailAddress"], "Lucidia IT");
+            EmailAddress to = new EmailAddress(_configuration["EmailSettings:EmailAddress"], "Lucidia IT");
+            return MailHelper.CreateSingleEmail(from, to, subject, body, null);
         }
     }
 }
