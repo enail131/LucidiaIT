@@ -8,67 +8,32 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-    <nav id="navigation" class="navbar">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div id="logo-circle">
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img id="header-logo" src="~/images/lucidiait_logo.png" alt="Lucidia IT logo" /></a>
-                </div>                
-            </div>
-            <div class="trapazoid">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Employees" asp-action="About">About us</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">Services</a></li>
-                        <li><a asp-area="" asp-controller="Partners" asp-action="Partners">Partners</a></li>
-                        <li><a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact us</a></li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
-            </div>
-        </div>
-    </nav>
+
+    @await Html.PartialAsync("_Header")
+
     <div class="container-full" id="page-jumbotron">
         @RenderSection("jumbotron", required: false)
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
     </div>
 
-    <div class="container-full" id="footer-container">
-        <div class="container">
-            <footer>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="footer-brand"><img id="footer-logo" src="~/images/lucidiait_logo.png" alt="Lucidia IT logo" /></a>
-                <ul id="footer-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Employees" asp-action="About">About us</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Services</a></li>
-                    <li><a asp-area="" asp-controller="Partners" asp-action="Partners">Partners</a></li>
-                    <li><a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact us</a></li>
-                </ul>
-                <p id="copyright">&copy; 2018 - Lucidia iT</p>
-            </footer>
-        </div>        
-    </div>
+    @await Html.PartialAsync("_Footer")
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

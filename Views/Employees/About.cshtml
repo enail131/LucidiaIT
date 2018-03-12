@@ -7,7 +7,7 @@
 @model IEnumerable<LucidiaIT.Models.EmployeeModels.Employee>
 
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Our culture";
 }
 
 @section Jumbotron {
@@ -21,7 +21,7 @@
 
 <div id="about-us">
     <h2>@ViewData["Title"]</h2>
-    <img id="about-us-img" src="~/images/house-trees-field-sky.jpg" alt="house trees field sky" />
+    <img id="about-us-img" src="~/images/people.jpg" alt="house trees field sky" />
     <p class="about-us-paragraph">
         Specializing in Advanced Network Engineering & Data Center Design with the ability to provide best in class Installation & Support. Our scope is comprehensive: we use our internal resources and long-nurtured relationships with our specialized partners to deliver innovative network designs and solutions. We also deliver value added features such as Network Security and Automation Solutions internally and through our partner channels.
     </p>
@@ -38,7 +38,6 @@
         Our employees have built Data Centers and networks for some of the largest customers in the Midwest, including numerous Fortune 500 organizations.
     </p>
     <div class="clearfix"></div>
-    <h2>Our team</h2>
     @if (SignInManager.IsSignedIn(User))
     {
         <p>
@@ -47,6 +46,8 @@
         </p>
     }
     <div class="row" id="people-container">
+        <h2>Our team</h2>
+
         @foreach (var employee in Model)
         {
              <div class="col-sm-12 col-md-4 people-bio">

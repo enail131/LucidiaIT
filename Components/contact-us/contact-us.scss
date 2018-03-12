@@ -64,4 +64,17 @@
         margin-top: 25px;
         float: right;
     }
+
+    #social-media-chicklets {
+        float: left;
+        list-style-type: none;
+        padding: 0;
+
+        .social-media-chicklet {
+            height: 45px;
+            width: 45px;
+            float: left;
+            margin: 25px 20px 25px 0;
+        }
+    }
 }

@@ -8,6 +8,19 @@
     margin-top: 150px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: $playfair;
+}
+
+p {
+    font-family: $roboto;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: $bp-xs) {
     .body-content {
         margin-top: 75px;

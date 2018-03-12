@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<LucidiaIT.Models.PartnerModels.Partner>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -25,46 +27,12 @@
     </div>
     <div id="partner-slider">
         <div id="partners-container">
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
-            <div class="partner-container">
-                <div class="partner">
-                    <p>partner logo</p>
-                </div>
-            </div>
+        @foreach (var partner in Model)
+        {
+            <a href="@partner.URL" class="partner-container">
+                <div class="partner" style="background: url('@partner.Logo') no-repeat center; background-size: cover;"></div>
+            </a>
+        }
         </div>
     </div>
 </div>

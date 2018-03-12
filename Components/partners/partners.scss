@@ -106,7 +106,7 @@
 
     .partner-container {
         padding: 0 5px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .partner {
@@ -114,10 +114,12 @@
         position: relative;
         overflow: hidden;
         padding: 0;
+        box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .4);
         
         .partner-logo {
             height: 100%;
             width: 100%;
+            display: block;
         }
 
         &:hover {

@@ -39,11 +39,12 @@ namespace LucidiaIT
                 .AddDefaultTokenProviders();
 
             // Add application services.
+                // Transient services
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IStorageService, StorageService>();
             services.AddTransient<IMessageBuilder, MessageBuilder>();
             services.AddTransient<ISendGridBuilder, SendGridBuilder>();
-
+                //Scoped services
             services.AddScoped<IDataService<Employee>, EmployeeService>();
             services.AddScoped<IDataService<Partner>, PartnerService>();
 

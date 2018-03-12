@@ -14,6 +14,10 @@
 
         li {
             float: none;
+
+            a {
+                color: white;
+            }
         }
     }
 
@@ -27,6 +31,7 @@
 
     #header-logo {
         height: 75px;
+        width: 85%;
     }
 
     #logo-circle {
@@ -96,9 +101,33 @@
         }
     }
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1400px) and (max-width: 1549px) {
         .trapazoid {
             right: 15%;
+        }
+    }
+
+    @media (min-width: 1550px) and (max-width: 1649px) {
+        .trapazoid {
+            right: 17%;
+        }
+    }
+
+    @media (min-width: 1650px) and (max-width: 1699px) {
+        .trapazoid {
+            right: 18%;
+        }
+    }
+
+    @media (min-width: 1700px) and (max-width: 1849px) {
+        .trapazoid {
+            right: 20%;
+        }
+    }
+
+    @media (min-width: 1850px) {
+        .trapazoid {
+            right: 24%;
         }
     }
 
