@@ -1,0 +1,34 @@
+﻿#services-container {
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.4);
+    margin-top: 25px;
+
+    #service-title {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .service-container {
+        margin-bottom: 25px;
+        padding: 10px;        
+
+        .service-content {
+            width: 65%;
+            margin: 15px auto 10px;
+
+            .service-image {
+                height: 175px;
+            }
+
+            h2 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: $bp-sm-min) {
+            .service-content {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<LucidiaIT.Models.PartnerModels.Partner>
+
+@foreach (var partner in Model)
+{
+    <div class="partner-container col-xs-12 col-md-3">
+        <a href="@partner.URL" class="partner col-xs-12" target="_blank">
+            <img src="@partner.Logo" class="partner-logo" alt="@partner.Name company logo" />
+            <div class="partner-info">
+                <h2>@partner.Name</h2>
+                <p>@partner.URL</p>
+            </div>
+        </a>
+    </div>
+}

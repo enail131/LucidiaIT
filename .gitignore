@@ -11,6 +11,9 @@
 appsettings.json
 appsettings.Development.json
 
+#node modules
+node_modules/*
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

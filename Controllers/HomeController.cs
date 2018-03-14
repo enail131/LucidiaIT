@@ -3,6 +3,7 @@ using LucidiaIT.Models;
 using LucidiaIT.Models.EmployeeModels;
 using LucidiaIT.Models.PartnerModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -19,7 +20,14 @@ namespace LucidiaIT.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GetListAsync());
+            List<Partner> partnerList = await _context.GetListAsync();
+            partnerList.Sort((p, q) => p.Name.CompareTo(q.Name));
+            return View(partnerList);
+        }
+
+        public IActionResult Services()
+        {
+            return View();
         }
 
         public IActionResult Error()

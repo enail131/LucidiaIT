@@ -34,7 +34,9 @@ namespace LucidiaIT.Controllers
 
         public async Task<IActionResult> Partners()
         {
-            return View(await _context.GetListAsync());
+            List<Partner> partnerList = await _context.GetListAsync();
+            partnerList.Sort((p, q) => p.Name.CompareTo(q.Name));
+            return View(partnerList);
         }
 
         // GET: Partners

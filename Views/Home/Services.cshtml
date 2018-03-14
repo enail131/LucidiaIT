@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Services";
+}
+
+@section Jumbotron {
+    <div id="services-jumbotron" class="jumbotron">
+        <div class="col-xs-12 col-sm-8 col-md-5" id="jumbotron-content">
+            <h2 id="services-title">Services</h2>
+            <p>Lucidia IT provides a number of services to meet your business needs</p>
+        </div>
+    </div>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div id="services-container" class="col-xs-12">
+            <h2 id="service-title" class="title">@ViewData["Title"]</h2>
+            <div class="service-container col-xs-12 col-md-6">
+                <div class="service-content">
+                    <img class="service-image" src="~/images/Optimized-Networking.jpg" alt="Networking image with network cables going in tooltip a server" />
+                    <h2>Enterprise networking</h2>
+                    <p>Certified professionals will design a network that meets your requirements for performance, security, capacity and scalability.</p>
+                </div>
+            </div>
+            <div class="service-container col-xs-12 col-md-6">
+                <div class="service-content">
+                    <img class="service-image" src="~/images/Optimized-datacenter.jpg" alt="Networking image with network cables going in tooltip a server" />
+                    <h2>Datacenter services</h2>
+                    <p>Public cloud, private infrastructure, or the ideal hybrid to get the job done, LucidiaIT provides the expertise to optimize your Datacenter needs.</p>
+                </div>
+            </div>
+            <div class="service-container col-xs-12 col-md-6">
+                <div class="service-content">
+                    <img class="service-image" src="~/images/Optimized-Networking.jpg" alt="Networking image with network cables going in tooltip a server" />
+                    <h2>Connectivity expertise</h2>
+                    <p>Getting to the cloud requires a solid connection.  Let LucidiaIT design the connectivity necessary to ensure optimal uptime at the minimal cost.</p>
+                </div>
+            </div>
+            <div class="service-container col-xs-12 col-md-6">
+                <div class="service-content">
+                    <img class="service-image" src="~/images/Optimized-worldtablet.jpg" alt="Networking image with network cables going in tooltip a server" />
+                    <h2>Residency services</h2>
+                    <p>Adopting new technology involves more than a product purchase or tactical installation services.  LucidiaIT's Residency Services allow customers to fully operationalize leading technology instead of adding another piece of Shelfware.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

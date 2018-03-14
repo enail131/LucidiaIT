@@ -12,7 +12,7 @@
 }
 
 @section Jumbotron {
-    <div class="jumbotron">
+    <div id="patners-jumbotron" class="jumbotron">
         <div class="col-sm-12 col-md-4" id="jumbotron-content">
             <h2>Partners.</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -32,18 +32,7 @@
 
 <div class="container" id="partners-page">
     <div class="row">
-        @foreach (var partner in Model)
-        {
-            <div class="partner-container col-xs-12 col-md-3">
-                <a href="@partner.URL" class="partner col-xs-12" target="_blank">
-                    <img src="@partner.Logo" class="partner-logo" alt="@partner.Name company logo" />
-                    <div class="partner-info">
-                        <h2>@partner.Name</h2>
-                        <p>@partner.URL</p>
-                    </div>
-                </a>
-            </div>
-        }
+        @await Html.PartialAsync("_Partners.cshtml", Model);
     </div>
 </div>
 

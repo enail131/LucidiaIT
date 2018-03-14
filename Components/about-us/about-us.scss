@@ -19,12 +19,22 @@
         margin-top: 65px;
     }
 
-    img {
+    .item {
+        height: 450px;
+    }
+
+    @media (max-width: $bp-sm-min) {
+        .item {
+            height: 200px;
+        }
+    }
+
+    /*img {
         float: right;
         height: 450px;
         width: 50%;
         padding: 0 10px;
-    }
+    }*/
 
     %employee-image {
         text-align: center;
@@ -42,6 +52,7 @@
     .people-img {
         @extend %employee-image;
         display: block;
+        margin: auto;
     }
 
     .people-img-container {
@@ -57,6 +68,10 @@
     }
 
     .people-bio {
-        margin-bottom: 45px;
+        clear: both;
+    }
+
+    .people-bio:nth-child(4) {
+        clear: both;
     }
 }

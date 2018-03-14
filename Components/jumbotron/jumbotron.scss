@@ -1,7 +1,19 @@
-﻿#page-jumbotron {
+﻿@mixin background-properties($image-url) {
+    background: url($image-url) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#page-jumbotron {
+
+    #home-jumbotron { @include background-properties('/images/Optimized-worldhands.jpg'); }
+    #about-us-jumbotron { @include background-properties('/images/Optimized-orb.jpg'); }
+    #services-jumbotron { @include background-properties('/images/Optimized-galaxy.jpg'); }
+    #patners-jumbotron { @include background-properties('/images/Optimized-worldtablet.jpg'); }
+    #contact-us-jumbotron { @include background-properties('/images/Optimized-orbhand.jpg'); }
 
     .jumbotron {
-        background: url('/images/worldhands.jpg') no-repeat center;
+        background: url('/images/Optimized-worldhands.jpg') no-repeat center;
         background-size: cover;
         background-attachment: fixed;
         min-height: 540px;
@@ -26,7 +38,7 @@
 
     @media (max-width: $bp-xs) {
         #jumbotron-content {
-            right: 0;
+            left: 0;
             top: 30%;
         }
     }

@@ -5,9 +5,9 @@
 }
 
 @section Jumbotron {
-    <div class="jumbotron">
-        <div class="col-sm-12 col-md-4" id="jumbotron-content">
-            <h2>Business driven. | Women owned.</h2>
+    <div id="home-jumbotron" class="jumbotron">
+        <div class="col-xs-12 col-sm-8 col-md-5" id="jumbotron-content">
+            <h2>Engenering led | Business Driven. | Women owned.</h2>
             <p>
                 Innovative solutions begin with asking the right questions and truly listening to what the clients say.
                 Whether it’s bringing in the right technology or optimizing current assets, our solutions are custom fit for the client’s needs and requirements
@@ -16,26 +16,21 @@
     </div>
 }
 
-<div class="row" id="partners">
-    <h1 style="text-align: center;">Partners</h1>
-
-    <div class="slider-arrow" id="slider__left-arrow-container" data-arrow-direction="left">
-        <div id="slider__left-arrow"></div>
-    </div>
-    <div class="slider-arrow" id="slider__right-arrow-container" data-arrow-direction="right">
-        <div id="slider__right-arrow"></div>
-    </div>
-    <div id="partner-slider">
-        <div id="partners-container">
-        @foreach (var partner in Model)
-        {
-            <a href="@partner.URL" class="partner-container">
-                <div class="partner" style="background: url('@partner.Logo') no-repeat center; background-size: cover;"></div>
-            </a>
-        }
+    <div id="mission-statement" class="container">
+        <div class="row">
+            <h2 class="title">Our mission</h2>
+            <p><i>&quot;To bring integrity and engineering excellence to our customers through innovative technologies & solutions delivered with precision.&quot;</i></p>
         </div>
     </div>
-</div>
+
+    <div class="container" id="partners-page">
+        <div class="row">
+            <h2 id="partner-title" class="title">Partners</h2>
+            @await Html.PartialAsync("~/Views/Partners/_Partners.cshtml", Model)
+        </div>
+    </div>
+
+@await  Html.PartialAsync("~/Views/Shared/_CTA.cshtml")
 
 @*<div class="row">
         <h1 style="text-align: center;">Services</h1>
