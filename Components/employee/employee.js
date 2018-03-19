@@ -1,9 +1,10 @@
 ﻿lucidia.components.employee = (function ($) {
     var constants = {
-        ajax: {
-            uploadUrl: '/Employees/UploadImages',
+        ajax: {            
             createEmployeeUrl: '/Employees/Create',
+            editEmployeeUrl: '/Employees/Edit',
             submitButton: '#create-employee-btn',
+            editButton: "#edit-employee-btn",
             imagesForm: '#employee-images-form',
             employeeForm: '#employee-info-form',
             initialImage: '#InitialImage',
@@ -24,6 +25,11 @@
                     createEmployee();
                 });
             },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editButton).click(function () {
+                        editEmployee();
+                    });
+                },
                 createEmployee = function () {
                     var formData = new FormData(),
                         token = $(c.ajax.token).val();
@@ -44,8 +50,36 @@
                         success: createEmployeeSuccess
                     });
                 },
+                editEmployee = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getEmployeeID(formData);
+                    getEmployeeInfo(formData);
+                    getImages(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.editEmployeeUrl,
+                        success: editEmployeeSuccess
+                    });
+                },
                 createEmployeeSuccess = function (data) {
                     $(c.selectors.employeeContainer).html(data);
+                },
+                editEmployeeSuccess = function (data) {
+                    window.location.href = data.url;
+                },
+                getEmployeeID = function (formData) {
+                    var id = $(c.ajax.employeeForm + " #ID").attr("value");
+                    formData.append("id", id);
                 },
                 getEmployeeInfo = function (formData) {
                     $(c.ajax.employeeForm + " input[type='text']").each(function () {
@@ -69,6 +103,7 @@
                 },
                 eventHandlers = function () {
                     clickCreateButtonHandler();
+                    clickEditButtonHandler();
                 },
                 init = function () {
                     eventHandlers();

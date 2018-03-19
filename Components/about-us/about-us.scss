@@ -1,22 +1,63 @@
 ﻿#about-us {
-    text-align: center;
     clear: both;
 
-    #about-us-paragraph {
+    .carousel-caption {
+        text-align: left;
+        top: 40%;
+
+        .caption-content {
+            background: rgba(0, 0, 0, 0);
+        }
+    }
+
+    #myCarousel {
         margin-bottom: 55px;
     }
 
+    .team-title {
+        text-align: center;
+    }
+
+    .about-us-paragraph {
+        margin-bottom: 25px;
+        font-size: 16px;
+        line-height: 1.5em;
+    }
+
+    #about-us-img {
+        float: right;
+        height: 200px;
+        margin-left: 7.5px;
+    }
+
+    @media (max-width: $bp-xs) {
+        #about-us-img {
+            float: none;
+        }
+
+        .about-us-paragraph {
+            margin-top: 25px;
+            text-align: center;
+        }
+    }
+
     h2 {
-        margin-bottom: 45px;
+        margin-bottom: 30px;
     }
 
     p {
-        text-align: left;
         font-size: 16px;
     }
 
+    .our-team-paragraph {
+        margin: auto;
+        text-align: left;
+        margin-bottom: 35px;
+        line-height: 1.5em;
+    }
+
     #people-container {
-        margin-top: 65px;
+        margin-top: 45px;
     }
 
     .item {
@@ -28,14 +69,12 @@
             height: 200px;
         }
     }
-
     /*img {
         float: right;
         height: 450px;
         width: 50%;
         padding: 0 10px;
     }*/
-
     %employee-image {
         text-align: center;
         height: 150px;
@@ -68,10 +107,8 @@
     }
 
     .people-bio {
-        clear: both;
-    }
-
-    .people-bio:nth-child(4) {
-        clear: both;
+        text-align: center;
+        margin-bottom: 20px;
+        min-height: 405px;
     }
 }

@@ -3,4 +3,5 @@
     lucidia.components.employee.init();
     lucidia.components.navigation.init();
     lucidia.components.partners.init();
+    lucidia.components.solutions.init();
 };

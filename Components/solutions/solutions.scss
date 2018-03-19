@@ -1,0 +1,47 @@
+﻿.solutions-container {
+    #account-links {
+        margin-bottom: 15px;
+    }
+
+    .solution-container {
+
+        img {
+            width: 100%;
+        }
+
+        .solution {
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            margin-bottom: 25px;
+        
+            &:hover {
+                .solution-content {
+                    top: 0;
+                }
+            }
+
+            @media (max-width: $bp-xs) {
+                position: initial;
+            }
+        }
+
+        .solution-content {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background: rgba(0, 0, 0, .4);
+            top: 340px;
+            transition-property: all;
+            transition-duration: .5s;
+            color: white;
+
+            @media (max-width: $bp-xs) {
+                position: initial;
+            }
+        }
+
+    }   
+    
+}

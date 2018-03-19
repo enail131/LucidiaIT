@@ -11,7 +11,12 @@ $bp-md-max: ($bp-lg - 1);
 
 /* FONTS */
 
-$playfair: 'Playfair Display', serif;
+@font-face {
+    font-family: "Market fresh";
+    src: url("/fonts/Market Fresh.ttf");
+}
+
+$market-fresh: 'Market fresh', serif;
 $roboto: 'Roboto', sans-serif;
 
 /* END FONTS */

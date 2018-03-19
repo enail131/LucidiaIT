@@ -7,65 +7,68 @@
 
 @section Jumbotron {
     <div class="jumbotron">
-        <div class="col-xs-12 col-sm-8 col-md-5" id="jumbotron-content">
+        <div class="container" id="jumbotron-content">
             <h2>Create employee</h2>
             <p>Fill out the form below to create new employee</p>
         </div>
     </div>
 }
 
-<h2>Create</h2>
+<div class="container">
 
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4" id="create-employee-container">
-        <form id="employee-info-form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-        </form>
-        <form id="employee-images-form" enctype="multipart/form-data">
-            <div class="form-group">
-                <label asp-for="InitialImage" class="control-label"></label>
-                <input asp-for="InitialImage" type="file" class="form-control" />
-                <span asp-validation-for="InitialImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoverImage" class="control-label"></label>
-                <input asp-for="HoverImage" type="file" class="form-control" />
-                <span asp-validation-for="HoverImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input value="Create" class="btn btn-default" id="create-employee-btn" />
-            </div>
-            @Html.AntiForgeryToken()
-        </form>
+    <h2>Create</h2>
+
+    <h4>Employee</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4" id="create-employee-container">
+            <form id="employee-info-form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </form>
+            <form id="employee-images-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="InitialImage" class="control-label"></label>
+                    <input asp-for="InitialImage" type="file" class="form-control" />
+                    <span asp-validation-for="InitialImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoverImage" class="control-label"></label>
+                    <input asp-for="HoverImage" type="file" class="form-control" />
+                    <span asp-validation-for="HoverImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input value="Create" class="btn btn-default" id="create-employee-btn" />
+                </div>
+                @Html.AntiForgeryToken()
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

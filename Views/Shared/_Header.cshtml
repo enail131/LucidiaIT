@@ -15,10 +15,10 @@
             <ul class="nav navbar-nav">
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-area="" asp-controller="Employees" asp-action="About">About us</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Services">Services</a></li>
+                <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Solutions</a></li>
                 <li><a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact us</a></li>
+                @await Html.PartialAsync("_LoginPartial")
             </ul>
-            @await Html.PartialAsync("_LoginPartial")
         </div>
     </div>
 </nav>

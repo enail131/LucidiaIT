@@ -1,173 +1,53 @@
-﻿#navigation {
-    z-index: 1;
-    height: 0;
-    text-align: center;
-    min-height: 0;
+﻿.navbar-inverse {
     margin-bottom: 0;
-    position: relative;
+    background-color: rgba(0, 0, 0, .8);
 
-    .navbar-nav {
-        float: none;
-
-        li {
-            float: none;
-
-            a {
-                color: white;
-            }
-        }
+    .navbar-brand {
+        padding: 0;
+        margin: 5px;
+        margin-left: 15px;
     }
 
-    .navbar-collapse {
+    .navbar-toggle {
         margin-top: 15px;
     }
 
-    &::after {
-        @extend %clear-fix;
-    }
+    .navbar-nav {
+        float: right;
 
-    #header-logo {
-        height: 75px;
-        width: 85%;
-    }
+        li {
 
-    #logo-circle {
-        background: black;
-        height: 310px;
-        width: 335px;
-        border-radius: 50%;
-        margin-top: -175px;
-        position: absolute;
-        right: 6%;
-    }
+            &:hover {
+                background-color: grey;
+            }
 
-    #header-logo-mobile {
-        display: none;
-    }
-
-    .trapazoid {
-        border-bottom: 480px solid black;
-        border-left: 40px solid transparent;
-        border-right: 40px solid transparent;
-        height: 99px;
-        width: 240px;
-        position: absolute;
-        top: 150px;
-        right: 10%;
+            a {
+                padding: 20px 15px;
+                font-family: $market-fresh;
+                font-size: 20px;
+                color: #fff;
+            }
+        }
     }
 
     @media (max-width: $bp-xs) {
-        float: none;
-        clear: both;
-
-        .container {
-            padding: 0;
-        }
-
-        #header-mobile-container {
-            background: rgba(0, 0, 0, .4);
-        }
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        border-bottom: 1px solid grey;
 
         .navbar-nav {
-            margin: 0 -15px;
+            clear: both;
+            float: none;
+            text-align: center;
 
             li {
-                border-bottom: 1px solid;
-                background: rgba(0, 0, 0, .8);
-            }
-        }
-
-        .navbar-header {
-
-            .navbar-toggle {
-                margin-top: 20px;
-
-                .icon-bar {
-                    height: 4px;
-                    width: 25px;
-                    border-radius: 4px;
-                    background: #fff;
-                    border: 1px solid #fff;
+                a {
+                    border-bottom: 1px solid grey;
+                    font-size: 14px;
+                    font-weight: bold;
                 }
             }
         }
-
-        #logo-circle {
-            display: none;
-        }
-
-        #header-logo-mobile {
-            display: inline-block;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .trapazoid {
-            border-bottom: none;
-            border-left: none;
-            border-right: none;
-            height: auto;
-            width: 100%;
-            position: initial;
-
-            .navbar-collapse {
-                margin-top: 0;
-            }
-        }
-    }
-
-    @media (min-width: 1400px) and (max-width: 1549px) {
-        #logo-circle {
-            right: 12%;
-        }
-
-        .trapazoid {
-            right: 15%;
-        }
-    }
-
-    @media (min-width: 1550px) and (max-width: 1649px) {
-        #logo-circle {
-            right: 14%;
-        }
-
-        .trapazoid {
-            right: 17%;
-        }
-    }
-
-    @media (min-width: 1650px) and (max-width: 1699px) {
-        #logo-circle {
-            right: 15%;
-        }
-
-        .trapazoid {
-            right: 18%;
-        }
-    }
-
-    @media (min-width: 1700px) and (max-width: 1849px) {
-        #logo-circle {
-            right: 17%;
-        }
-
-        .trapazoid {
-            right: 20%;
-        }
-    }
-
-    @media (min-width: 1850px) {
-        #logo-circle {
-            right: 21.5%;
-        }
-
-        .trapazoid {
-            right: 24%;
-        }
-    }
-
-    .navbar-brand {
-        margin-top: 175px;
-        margin-left: 25px;
     }
 }

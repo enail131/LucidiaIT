@@ -21,8 +21,7 @@
 }
 
 @if (SignInManager.IsSignedIn(User))
-{
-    <h2>Partners</h2>
+{ 
     <p>
         <a asp-controller="Partners" asp-action="Create">Create New</a> |
         <a asp-controller="Partners" asp-action="Index">Partners List</a>

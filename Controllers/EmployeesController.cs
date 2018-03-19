@@ -7,9 +7,11 @@ using LucidiaIT.Models.EmployeeModels;
 using Microsoft.AspNetCore.Http;
 using LucidiaIT.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LucidiaIT.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IDataService<Employee> _context;
@@ -32,18 +34,22 @@ namespace LucidiaIT.Controllers
             _config = config;
         }
 
-        // GET: Employees
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.GetListAsync());
-        }
-
+        [Route("About")]
+        [AllowAnonymous]
         public async Task<IActionResult> About()
         {
             return View(await _context.GetListAsync());
         }
 
+        // GET: Employees
+        [Authorize]
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.GetListAsync());
+        }
+
         // GET: Employees/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -61,6 +67,7 @@ namespace LucidiaIT.Controllers
         }
 
         // GET: Employees/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -70,6 +77,7 @@ namespace LucidiaIT.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Title,Description,InitialImage,HoverImage")] Employee employee, IEnumerable<IFormFile> files)
         {
@@ -77,7 +85,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
-                    await _storage.UploadImages(files, employee, null);
+                    await _storage.UploadImages(files, employee, null, null);
                     await _context.CreateAsync(employee);
                     return PartialView("~/Views/Shared/_CreateSuccessful.cshtml");
                 }
@@ -91,9 +99,10 @@ namespace LucidiaIT.Controllers
             return PartialView("~/Views/Shared/_CreateFailed.cshtml");
         }
 
-        
+
 
         // GET: Employees/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,8 +122,8 @@ namespace LucidiaIT.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Title,Description,InitialImage,HoverImage")] Employee employee)
+        [Authorize]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Title,Description,InitialImage,HoverImage")] Employee employee, IEnumerable<IFormFile> files)
         {
             if (id != employee.ID)
             {
@@ -125,6 +134,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
+                    await _storage.UploadImages(files, employee, null, null);
                     await _context.EditAsync(employee);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -138,12 +148,13 @@ namespace LucidiaIT.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Json(new { Url = "/About" });
             }
             return View(employee);
         }
 
         // GET: Employees/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -161,6 +172,7 @@ namespace LucidiaIT.Controllers
         }
 
         // POST: Employees/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

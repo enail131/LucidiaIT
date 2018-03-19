@@ -1,0 +1,47 @@
+﻿@model LucidiaIT.Models.SolutionModels.Solution
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Solution</h4>
+<hr />
+<div class="row">
+    <div id="solution-container" class="col-md-4">
+        <form id="solution-info-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </form>
+        <form id="solution-image-form">
+            <div class="form-group">
+                <label asp-for="SolutionImage" class="control-label"></label>
+                <input asp-for="SolutionImage" type="file" class="form-control" />
+                <span asp-validation-for="SolutionImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input value="Create" class="btn btn-default" id="create-solution-btn" />
+            </div>
+        </form>
+        @Html.AntiForgeryToken()
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,10 +1,13 @@
 ﻿<div class="container-full" id="footer-container">
     <div class="container">
         <footer class="row">
-            <div id="footer-left" class="col-xs-12 col-md-6">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="footer-brand"><img id="footer-logo" src="~/images/white_logo_transparent.svg" alt="Lucidia IT logo" /></a>
+            <div id="footer-left" class="col-xs-12 col-sm-6">
+                <a asp-controller="Home" asp-action="Index" class="footer-brand col-xs-12 col-sm-6"><img id="footer-logo" src="~/images/white_logo_transparent.svg" alt="Lucidia IT logo" /></a>
+                <h2 class="title">Our mission</h2>
+                <p><i>&quot;To bring integrity and engineering excellence to our customers through innovative technologies & solutions delivered with precision.&quot;</i></p>
             </div>
-            <div id="footer-right" class="col-xs-12 col-md-6">
+            <div id="footer-right" class="col-xs-12 col-sm-6">
+               
                 <ul id="footer-social-media-chicklets">
                     @*<li class="social-media-chicklet">
                             <a href="https://www.facebook.com">
@@ -30,18 +33,22 @@
                 <ul id="footer-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Employees" asp-action="About">About us</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Services">Services</a></li>
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Solutions</a></li>
                     <li><a asp-area="" asp-controller="ContactUs" asp-action="Index">Contact us</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
-            <div class="row">
+            <div id="footer-bottom" class="row">
+                <div class="col-xs-12 col-md-6" id="footer-logo-container">
+                    <a href="https://www.sba.gov/contracting/government-contracting-programs/women-owned-small-businesses"class="partner-logo-footer">
+                        <img src="~/images/WOSB_web.jpg" alt="Women owned small business logo" />
+                    </a>
+                    <a href="https://www.nawbo.org"  class="partner-logo-footer">
+                        <img src="~/images/Nawbo_1web.jpg" alt="National Association of Women Business Owners logo" />
+                    </a>
+                </div>
                 <div class="col-xs-12 col-md-6" id="copyright-container">
                     <p id="copyright">&copy; 2018 - Lucidia iT</p>
-                </div>
-                <div class="col-xs-12 col-md-6" id="footer-logo-container">
-                    <img class="partner-logo-footer" src="~/images/WSOB.jpg" alt="Women owned small business logo" />
-                    <img class="partner-logo-footer" src="~/images/NAWBO.jpg" alt="National Association of Women Business Owners logo" />
                 </div>
             </div>
         </footer>

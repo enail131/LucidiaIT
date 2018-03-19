@@ -17,20 +17,20 @@ namespace LucidiaIT.Services
         {
             string subject = "New error reported";
             string body = $"Error message: {e.Message} \n\n Error stack: {e.StackTrace}";
-            return BuildEmailMessage(subject, body);
+            return BuildEmailMessage(_configuration["EmailSettings:MyEmail"], subject, body);
         }
 
         public SendGridMessage BuildContactMessage(ContactUsViewModel contact)
         {
             var subject = "New contact message";
             var body = $"Name: {contact.Name} \n\nEmail: {contact.EmailAddress} \n\nMessage: \n{contact.Message}";
-            return BuildEmailMessage(subject, body);
+            return BuildEmailMessage(_configuration["EmailSettings:LucidiaEmail"], subject, body);
         }
         
-        private SendGridMessage BuildEmailMessage(string subject, string body)
+        private SendGridMessage BuildEmailMessage(string toEmail, string subject, string body)
         {
-            EmailAddress from = new EmailAddress(_configuration["EmailSettings:EmailAddress"], "Lucidia IT");
-            EmailAddress to = new EmailAddress(_configuration["EmailSettings:EmailAddress"], "Lucidia IT");
+            EmailAddress from = new EmailAddress(_configuration["EmailSettings:LucidiaEmail"], "Lucidia IT");
+            EmailAddress to = new EmailAddress(toEmail, "Lucidia IT");
             return MailHelper.CreateSingleEmail(from, to, subject, body, null);
         }
     }

@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LucidiaIT.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model IEnumerable<LucidiaIT.Models.SolutionModels.Solution>
+
+@{
+    ViewData["Title"] = "Solutions";
+}
+
+@section Jumbotron {
+    <div id="services-jumbotron" class="jumbotron">
+        <div class="container" id="jumbotron-content">
+            <h2 id="services-title" class="title">@ViewData["Title"]</h2>
+            @*<p>Lucidia IT provides a number of services to meet your business needs</p>*@
+        </div>
+    </div>
+}
+
+<div class="container">
+    <div class="services-content">
+        <h2 id="service-title" class="title">@ViewData["Title"]</h2>
+        @*<img id="services-img" src="~/images/Optimized-people.jpg" alt="house trees field sky" />*@
+        <p class="services-paragraph">
+            Our scope is comprehensive: we use our internal resources and long-nurtured relationships with our specialized partners to deliver innovative network designs and solutions. We also deliver value added features such as Network Security and Automation Solutions internally and through our partner channels.
+        </p>
+        <p class="services-paragraph">
+            Let LucidiaIT secure your existing architecture or build you a new architecture from the ground up which will be reliable, secure and scalable. Secure your future assets with LucidiaIT as your building block. The solutions we create consistently surpass client expectations and lays the foundation for future projects.
+        </p>
+    </div>
+
+    <div class="solutions-container row">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div id="account-links">
+                <a asp-controller="Solutions" asp-action="Create">Create new</a> | 
+                <a asp-controller="Solutions" asp-action="List">Soltions list</a>
+            </div>            
+        }
+
+        @foreach (var solution in Model)
+        {
+            <div class="solution-container col-xs-12 col-md-6">
+                <div class="solution col-xs-12" style="background: url('@solution.SolutionImage') no-repeat center; background-size: cover;">
+                    @*<img class="solution-image" src="@solution.SolutionImage" alt="@solution.Description" />*@
+                    <div class="solution-content col-xs-12">
+                        <h2>@solution.Name</h2>
+                        <p>@solution.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

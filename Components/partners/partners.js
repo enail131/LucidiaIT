@@ -10,9 +10,11 @@
         },
         ajax: {
             createPartnerButton: '#create-partner-btn',
+            editPartnerButton: '#edit-partner-btn',
             partnerImageForm: "#partner-image-form",
             partnerInfoForm: '#partner-info-form',
             createPartnerUrl: '/Partners/Create',
+            editPartnerUrl: '/Partners/Edit',
             token: "input[name='__RequestVerificationToken']"
         }
     },
@@ -43,6 +45,11 @@
                         createPartner();
                     });
                 },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editPartnerButton).click(function () {
+                        editPartner();
+                    });
+                },
                 createPartner = function () {
                     var formData = new FormData(),
                         token = $(c.ajax.token).val();
@@ -63,8 +70,36 @@
                         success: createPartnerSucces
                     });
                 },
+                editPartner = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getPartnerId(formData);
+                    getPartnerInfo(formData);
+                    getImages(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.editPartnerUrl,
+                        success: editPartnerSuccess
+                    });
+                },
                 createPartnerSucces = function (data) {
                     $(c.selectors.createPartnerContainer).html(data);
+                },
+                editPartnerSuccess = function (data) {
+                    window.location.href = data.url;
+                }
+                getPartnerId = function (formData) {
+                    var id = $(c.ajax.partnerInfoForm + " #ID").attr("value");
+                    formData.append("id", id);
                 },
                 getPartnerInfo = function (formData) {
                     $(c.ajax.partnerInfoForm + " input[type='text']").each(function () {
@@ -89,6 +124,7 @@
                 eventHandlers = function () {
                     clickArrow();
                     clickCreateButtonHandler();
+                    clickEditButtonHandler();
                 },
                 init = function () {
                     eventHandlers();

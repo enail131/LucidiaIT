@@ -7,9 +7,11 @@ using LucidiaIT.Models.PartnerModels;
 using Microsoft.AspNetCore.Http;
 using LucidiaIT.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LucidiaIT.Controllers
 {
+    [Authorize]
     public class PartnersController : Controller
     {
         private readonly IDataService<Partner> _context;
@@ -32,6 +34,7 @@ namespace LucidiaIT.Controllers
             _config = config;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Partners()
         {
             List<Partner> partnerList = await _context.GetListAsync();
@@ -40,12 +43,14 @@ namespace LucidiaIT.Controllers
         }
 
         // GET: Partners
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.GetListAsync());
         }
 
         // GET: Partners/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -63,6 +68,7 @@ namespace LucidiaIT.Controllers
         }
 
         // GET: Partners/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -72,6 +78,7 @@ namespace LucidiaIT.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Name,Description,URL,Logo")] Partner partner, IEnumerable<IFormFile> files)
         {
@@ -93,6 +100,7 @@ namespace LucidiaIT.Controllers
         }
 
         // GET: Partners/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -112,8 +120,9 @@ namespace LucidiaIT.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Description,URL,Logo")] Partner partner)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Description,URL,Logo")] Partner partner, IEnumerable<IFormFile> files)
         {
             if (id != partner.ID)
             {
@@ -124,6 +133,7 @@ namespace LucidiaIT.Controllers
             {
                 try
                 {
+                    await _storage.UploadImages(files, null, partner);
                     await _context.EditAsync(partner);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -137,12 +147,13 @@ namespace LucidiaIT.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Json(new { Url = "/" });
             }
             return View(partner);
         }
 
         // GET: Partners/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -161,6 +172,7 @@ namespace LucidiaIT.Controllers
 
         // POST: Partners/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

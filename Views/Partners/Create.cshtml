@@ -7,48 +7,50 @@
 
 @section Jumbotron {
     <div class="jumbotron">
-        <div class="col-xs-12 col-sm-8 col-md-5" id="jumbotron-content">
+        <div class="container" id="jumbotron-content">
             <h2>Create partner</h2>
             <p>Fill out the form below to create new partner</p>
         </div>
     </div>
 }
 
-<h2>Create</h2>
+<div class="container">
+    <h2>Create</h2>
 
-<h4>Partner</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4" id="create-partner-container">
-        <form id="partner-info-form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="URL" class="control-label"></label>
-                <input asp-for="URL" class="form-control" />
-                <span asp-validation-for="URL" class="text-danger"></span>
-            </div>
-        </form>
-        <form id="partner-image-form">
-            <div class="form-group">
-                <label asp-for="Logo" class="control-label"></label>
-                <input asp-for="Logo" type="file" class="form-control" />
-                <span asp-validation-for="Logo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input value="Create" class="btn btn-default" id="create-partner-btn" />
-            </div>
-            @Html.AntiForgeryToken()
-        </form>
+    <h4>Partner</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4" id="create-partner-container">
+            <form id="partner-info-form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="URL" class="control-label"></label>
+                    <input asp-for="URL" class="form-control" />
+                    <span asp-validation-for="URL" class="text-danger"></span>
+                </div>
+            </form>
+            <form id="partner-image-form">
+                <div class="form-group">
+                    <label asp-for="Logo" class="control-label"></label>
+                    <input asp-for="Logo" type="file" class="form-control" />
+                    <span asp-validation-for="Logo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input value="Create" class="btn btn-default" id="create-partner-btn" />
+                </div>
+                @Html.AntiForgeryToken()
+            </form>
+        </div>
     </div>
 </div>
 

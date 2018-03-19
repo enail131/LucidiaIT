@@ -30,6 +30,122 @@ var lucidia = {
     }
 };
 
+lucidia.components.employee = (function ($) {
+    var constants = {
+        ajax: {            
+            createEmployeeUrl: '/Employees/Create',
+            editEmployeeUrl: '/Employees/Edit',
+            submitButton: '#create-employee-btn',
+            editButton: "#edit-employee-btn",
+            imagesForm: '#employee-images-form',
+            employeeForm: '#employee-info-form',
+            initialImage: '#InitialImage',
+            hoverImage: '#HoverImage',
+            token: "input[name='__RequestVerificationToken']"
+        },
+        selectors: {
+            employeeImage: ".people-img",
+            employeeContainer: "#create-employee-container"
+        }
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var clickCreateButtonHandler = function () {
+                $(c.ajax.submitButton).click(function () {
+                    createEmployee();
+                });
+            },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editButton).click(function () {
+                        editEmployee();
+                    });
+                },
+                createEmployee = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getEmployeeInfo(formData);
+                    getImages(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.createEmployeeUrl,
+                        success: createEmployeeSuccess
+                    });
+                },
+                editEmployee = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getEmployeeID(formData);
+                    getEmployeeInfo(formData);
+                    getImages(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.editEmployeeUrl,
+                        success: editEmployeeSuccess
+                    });
+                },
+                createEmployeeSuccess = function (data) {
+                    $(c.selectors.employeeContainer).html(data);
+                },
+                editEmployeeSuccess = function (data) {
+                    window.location.href = data.url;
+                },
+                getEmployeeID = function (formData) {
+                    var id = $(c.ajax.employeeForm + " #ID").attr("value");
+                    formData.append("id", id);
+                },
+                getEmployeeInfo = function (formData) {
+                    $(c.ajax.employeeForm + " input[type='text']").each(function () {
+                        formData.append($(this).attr("name"), $(this).val());
+                    });
+
+                    $(c.ajax.imagesForm + " input[type='file']").each(function () {
+                        var files = $(this).get(0).files;
+                        if (files[0] != null) {
+                            formData.append($(this).attr("name"), files[0].name);
+                        }
+                    });
+                },
+                getImages = function (formData) {
+                    $(c.ajax.imagesForm + " input[type='file']").each(function () {
+                        var files = $(this).get(0).files;
+                        if (files[0] != null) {
+                            formData.append('files', files[0]);
+                        }
+                    });
+                },
+                eventHandlers = function () {
+                    clickCreateButtonHandler();
+                    clickEditButtonHandler();
+                },
+                init = function () {
+                    eventHandlers();
+                };
+            return {
+                init: init
+            };
+        }(constants, properties));
+    return methods;
+}(jQuery));
 lucidia.components.contactUs = (function ($) {
     var constants = {
         selectors: {
@@ -71,87 +187,6 @@ lucidia.components.contactUs = (function ($) {
         }(constants, properties));
     return methods;
 }(jQuery));
-lucidia.components.employee = (function ($) {
-    var constants = {
-        ajax: {
-            uploadUrl: '/Employees/UploadImages',
-            createEmployeeUrl: '/Employees/Create',
-            submitButton: '#create-employee-btn',
-            imagesForm: '#employee-images-form',
-            employeeForm: '#employee-info-form',
-            initialImage: '#InitialImage',
-            hoverImage: '#HoverImage',
-            token: "input[name='__RequestVerificationToken']"
-        },
-        selectors: {
-            employeeImage: ".people-img",
-            employeeContainer: "#create-employee-container"
-        }
-    },
-        properties = {
-
-        },
-        methods = (function (c, p) {
-            var clickCreateButtonHandler = function () {
-                $(c.ajax.submitButton).click(function () {
-                    createEmployee();
-                });
-            },
-                createEmployee = function () {
-                    var formData = new FormData(),
-                        token = $(c.ajax.token).val();
-                    getEmployeeInfo(formData);
-                    getImages(formData);
-
-                    $.ajax({
-                        method: 'post',
-                        processData: false,
-                        contentType: false,
-                        cache: false,
-                        data: formData,
-                        headers: {
-                            RequestVerificationToken: token
-                        },
-                        enctype: 'multipart/form-data',
-                        url: c.ajax.createEmployeeUrl,
-                        success: createEmployeeSuccess
-                    });
-                },
-                createEmployeeSuccess = function (data) {
-                    $(c.selectors.employeeContainer).html(data);
-                },
-                getEmployeeInfo = function (formData) {
-                    $(c.ajax.employeeForm + " input[type='text']").each(function () {
-                        formData.append($(this).attr("name"), $(this).val());
-                    });
-
-                    $(c.ajax.imagesForm + " input[type='file']").each(function () {
-                        var files = $(this).get(0).files;
-                        if (files[0] != null) {
-                            formData.append($(this).attr("name"), files[0].name);
-                        }
-                    });
-                },
-                getImages = function (formData) {
-                    $(c.ajax.imagesForm + " input[type='file']").each(function () {
-                        var files = $(this).get(0).files;
-                        if (files[0] != null) {
-                            formData.append('files', files[0]);
-                        }
-                    });
-                },
-                eventHandlers = function () {
-                    clickCreateButtonHandler();
-                },
-                init = function () {
-                    eventHandlers();
-                };
-            return {
-                init: init
-            };
-        }(constants, properties));
-    return methods;
-}(jQuery));
 
 
 lucidia.components.navigation = (function ($) {
@@ -185,9 +220,11 @@ lucidia.components.partners = (function ($) {
         },
         ajax: {
             createPartnerButton: '#create-partner-btn',
+            editPartnerButton: '#edit-partner-btn',
             partnerImageForm: "#partner-image-form",
             partnerInfoForm: '#partner-info-form',
             createPartnerUrl: '/Partners/Create',
+            editPartnerUrl: '/Partners/Edit',
             token: "input[name='__RequestVerificationToken']"
         }
     },
@@ -218,6 +255,11 @@ lucidia.components.partners = (function ($) {
                         createPartner();
                     });
                 },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editPartnerButton).click(function () {
+                        editPartner();
+                    });
+                },
                 createPartner = function () {
                     var formData = new FormData(),
                         token = $(c.ajax.token).val();
@@ -238,8 +280,36 @@ lucidia.components.partners = (function ($) {
                         success: createPartnerSucces
                     });
                 },
+                editPartner = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getPartnerId(formData);
+                    getPartnerInfo(formData);
+                    getImages(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.editPartnerUrl,
+                        success: editPartnerSuccess
+                    });
+                },
                 createPartnerSucces = function (data) {
                     $(c.selectors.createPartnerContainer).html(data);
+                },
+                editPartnerSuccess = function (data) {
+                    window.location.href = data.url;
+                }
+                getPartnerId = function (formData) {
+                    var id = $(c.ajax.partnerInfoForm + " #ID").attr("value");
+                    formData.append("id", id);
                 },
                 getPartnerInfo = function (formData) {
                     $(c.ajax.partnerInfoForm + " input[type='text']").each(function () {
@@ -264,6 +334,7 @@ lucidia.components.partners = (function ($) {
                 eventHandlers = function () {
                     clickArrow();
                     clickCreateButtonHandler();
+                    clickEditButtonHandler();
                 },
                 init = function () {
                     eventHandlers();
@@ -274,10 +345,107 @@ lucidia.components.partners = (function ($) {
         }(constants, properties));
     return methods;
 }(jQuery));
+lucidia.components.solutions = (function ($) {
+    var constants = {
+        ajax: {
+            infoForm: '#solution-info-form',
+            imageForm: '#solution-image-form',
+            editButton: '#edit-solution-btn',
+            createButton: '#create-solution-btn',
+            token: "input[name='__RequestVerificationToken']",
+            createUrl: '/Solutions/Create',
+            editUrl: '/Solutions/Edit'
+        }
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var clickCreateButtonHandler = function () {
+                $(c.ajax.createButton).click(function () {
+                    createSolution();
+                });
+            },
+                createSolution = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token).val();
+                    getSolutionInfo(formData);
+                    getSolutionImage(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.createUrl,
+                        success: getSuccessful
+                    });
+                },
+                editSolution = function () {
+                    var formData = new FormData(),
+                        token = $(c.ajax.token);
+                    getSolutionInfo(formData);
+                    getSolutionImage(formData);
+
+                    $.ajax({
+                        method: 'post',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        headers: {
+                            RequestVerificationToken: token
+                        },
+                        enctype: 'multipart/form-data',
+                        url: c.ajax.editUrl,
+                        success: getSuccessful
+                    });
+                },
+                getSuccessful = function (data) {
+                    $('#solution-container').html(data);
+                },
+                getSolutionInfo = function (formData) {
+                    $(c.ajax.infoForm + ' input[type="text"]').each(function () {
+                        formData.append($(this).attr("name"), $(this).val());
+                    });
+
+                    $(c.ajax.imageForm + " input[type='file']").each(function () {
+                        var files = $(this).get(0).files;
+                        if (files[0] != null) {
+                            formData.append($(this).attr("name"), files[0].name);
+                        }
+                    });
+                },
+                getSolutionImage = function (formData) {
+                    $(c.ajax.imageForm + " input[type='file']").each(function () {
+                        var files = $(this).get(0).files;
+                        if (files[0] != null) {
+                            formData.append('files', files[0]);
+                        }
+                    });
+                },
+                eventHandlers = function () {
+                    clickCreateButtonHandler();
+                },
+                init = function () {
+                    eventHandlers();
+                };
+            return {
+                init: init
+            };
+        }(constants, properties));
+    return methods;s
+}(jQuery));
 lucidia.init = function () {
     lucidia.components.contactUs.init();
     lucidia.components.employee.init();
     lucidia.components.navigation.init();
     lucidia.components.partners.init();
+    lucidia.components.solutions.init();
 };
 jQuery(document).ready(lucidia.init);

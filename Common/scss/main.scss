@@ -4,17 +4,13 @@
     display: block;
 }
 
-.container,
-.container-fluid {
-    padding: 0;
-}
-
 .body-content {
-    margin-top: 150px;
+    margin-top: 100px;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $playfair;
+    font-family: $market-fresh;
 }
 
 p {
@@ -23,7 +19,6 @@ p {
 
 img {
     height: 100%;
-    width: 100%;
 }
 
 .title {

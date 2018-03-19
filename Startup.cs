@@ -10,6 +10,7 @@ using LucidiaIT.Services;
 using LucidiaIT.Interfaces;
 using LucidiaIT.Models.EmployeeModels;
 using LucidiaIT.Models.PartnerModels;
+using LucidiaIT.Models.SolutionModels;
 
 namespace LucidiaIT
 {
@@ -47,10 +48,14 @@ namespace LucidiaIT
                 //Scoped services
             services.AddScoped<IDataService<Employee>, EmployeeService>();
             services.AddScoped<IDataService<Partner>, PartnerService>();
+            services.AddScoped<IDataService<Solution>, SolutionService>();
 
             services.AddSingleton(_config);
 
             services.AddMvc();
+
+            services.AddDbContext<SolutionContext>(options =>
+                    options.UseSqlServer(_config.GetConnectionString("SolutionContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

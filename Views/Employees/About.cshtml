@@ -7,112 +7,124 @@
 @model IEnumerable<LucidiaIT.Models.EmployeeModels.Employee>
 
 @{
-    ViewData["Title"] = "Our culture";
+    ViewData["Title"] = "About us";
 }
 
 @section Jumbotron {
     <div id="about-us-jumbotron" class="jumbotron">
-        <div class="col-xs-12 col-sm-8 col-md-5" id="jumbotron-content">
-            <h2>Lucidia iT</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="container" id="jumbotron-content">
+            <h2 class="title">We Are Lucidia IT</h2>
+            @*<p>We are one team.  Supportive, encouraging and committed to the success of our customers.  We work with integrity to create an open, transparent, and trust-based environment.  We are accountable for and will stand behind the collaborative decisions we make together with our customers and with each other.   We encourage thinking outside the box with passion and vigor, respecting and appreciating the perspectives of others.</p>*@
         </div>
     </div>
 }
 
     <div id="about-us" class="container">
 
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+        @*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <img src="~/images/Optimized-datacenter.jpg" alt="ASP.NET" class="img-responsive" />
                     <div class="carousel-caption" role="option">
-                        <p>
-                            Learn how to build ASP.NET apps that can run anywhere.
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                        <div class="caption-content">
+                            <p><strong>We are one team...</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportive, encouraging and committed to the success of our customers.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
                     <img src="~/images/Optimized-orb.jpg" alt="Visual Studio" class="img-responsive" />
                     <div class="carousel-caption" role="option">
-                        <p>
-                            There are powerful new features in Visual Studio for building modern web apps.
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                        <div class="caption-content">
+                            <p><strong>We are accountable...</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the collaborative decisions we make together with our customers and each other, and we will stand behind them.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
                     <img src="~/images/Optimized-galaxy.jpg" alt="Package Management" class="img-responsive" />
                     <div class="carousel-caption" role="option">
-                        <p>
-                            Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                        <div class="caption-content">
+                            <p><strong>We work with Integrity...</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creating an open, transparent, and trust-based environment.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="item">
                     <img src="~/images/Optimized-orbhand.jpg" alt="Microsoft Azure" class="img-responsive" />
                     <div class="carousel-caption" role="option">
-                        <p>
-                            Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                        <div class="caption-content">
+                            <p><strong>We encourage thinking outside the box...</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With passion and vigor.  We respect and appreciate the perspectives of others.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/images/Optimized-orbhand.jpg" alt="Microsoft Azure" class="img-responsive" />
+                    <div class="carousel-caption" role="option">
+                        <div class="caption-content">
+                            <p><strong>We care...</strong></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About the growth and development of our team, our customers, and our community.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            @*<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a>*@
-        </div>
+            </a>
+        </div>*@
 
 
-        @*<h2>@ViewData["Title"]</h2>
-        <img id="about-us-img" src="~/images/Optimized-people.jpg" alt="house trees field sky" />
+        <h2 class="team-title title">Our culture</h2>
         <p class="about-us-paragraph">
-            Specializing in Advanced Network Engineering & Data Center Design with the ability to provide best in class Installation & Support. Our scope is comprehensive: we use our internal resources and long-nurtured relationships with our specialized partners to deliver innovative network designs and solutions. We also deliver value added features such as Network Security and Automation Solutions internally and through our partner channels.
-        </p>
-        <p class="about-us-paragraph">
-            Located in Indianapolis and serving world-wide, we at LucidiaIT believe that professionalism is essential in our work.
+            <span><strong>We are one team...</strong></span><br />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportive, encouraging and committed to the success of our customers.</span>
         </p>
         <p class="about-us-paragraph">
-            We have been in the industry for the last 20 years and have seen the pitfalls and shortcomings that are inherent to the industry. Let LucidiaIT secure your existing architecture or build you a new architecture from the ground up that will be reliable, secure and scalable. Secure your future assets with LucidiaIT as your building block.  The solutions we create consistently surpass clients’ expectations and lay the foundation for future projects.
+            <span><strong>We are accountable...</strong></span><br />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the collaborative decisions we make together with our customers and each other, and we will stand behind them.</span>
         </p>
         <p class="about-us-paragraph">
-            LucidiaIT has 20+ years hands-on experience designing and working with computer networks and computer systems.
+            <span><strong>We work with Integrity...</strong></span><br />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creating an open, transparent, and trust-based environment.</span>
         </p>
         <p class="about-us-paragraph">
-            Our employees have built Data Centers and networks for some of the largest customers in the Midwest, including numerous Fortune 500 organizations.
+            <span><strong>We encourage thinking outside the box...</strong></span><br />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With passion and vigor.  We respect and appreciate the perspectives of others.</span>
         </p>
-        <div class="clearfix"></div>*@
-        @if (SignInManager.IsSignedIn(User))
-        {
-        <p>
-            <a asp-controller="Employees" asp-action="Create">Create New</a> |
-            <a asp-controller="Employees" asp-action="Index">Employees List</a>
+        <p class="about-us-paragraph">
+            <span><strong>We care...</strong></span><br />
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About the growth and development of our team, our customers, and our community.</span>
         </p>
-        }
+
         <div class="clearfix"></div>
+
         <div class="row" id="people-container">
-            <h2>Our team</h2>
+            <h2 class="team-title title">Our team</h2>
+            <p class="our-team-paragraph">
+                Located in Indianapolis and serving world-wide, we have a collective experience of over 80 years of hands-on experience designing and working with computer networks and computer systems.  Our team has built Data Centers and networks for some of the largest customers in the Midwest, including numerous Fortune 500 organizations.
+            </p>
+
+            @if (SignInManager.IsSignedIn(User))
+        {
+            <p>
+                <a asp-controller="Employees" asp-action="Create">Create New</a> |
+                <a asp-controller="Employees" asp-action="Index">Employees List</a>
+            </p>
+    }
 
             @foreach (var employee in Model)
         {

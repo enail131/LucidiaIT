@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LucidiaIT</title>
-
+    <link rel="shortcut icon" type="image/png" href="~/images/favicon.png" />
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto" rel="stylesheet">
@@ -24,14 +24,22 @@
 
     @await Html.PartialAsync("_Header")
 
+    <div class="clearfix"></div>
+
     <div class="container-full" id="page-jumbotron">
         @RenderSection("jumbotron", required: false)
     </div>
 
+    <div class="clearfix"></div>
+
     <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
+        <div class="container">
+            <hr />
+        </div>
     </div>
+
+    <div class="clearfix"></div>
 
     @await Html.PartialAsync("_Footer")
 

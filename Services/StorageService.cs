@@ -1,6 +1,7 @@
 ﻿using LucidiaIT.Interfaces;
 using LucidiaIT.Models.EmployeeModels;
 using LucidiaIT.Models.PartnerModels;
+using LucidiaIT.Models.SolutionModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
@@ -20,9 +21,22 @@ namespace LucidiaIT.Services
 
         public StorageService(IConfiguration Configuration) => _configuration = Configuration;
 
-        public async Task UploadImages(IEnumerable<IFormFile> files, Employee employee = null, Partner partner = null)
+        public async Task UploadImages(IEnumerable<IFormFile> files, Employee employee = null, Partner partner = null, Solution solution = null)
         {
-            string containerName = (employee != null) ? "employee" : "partners";
+            string containerName;
+            if (employee != null)
+            {
+                containerName = "employee";
+            }
+            else if (partner != null)
+            {
+                containerName = "partners";
+            }
+            else
+            {
+                containerName = "solutions";
+            }
+
             int i = 0;
             foreach (var file in files)
             {
@@ -36,9 +50,13 @@ namespace LucidiaIT.Services
                     {
                         SetEmployeeImages(employee, imageUrl, i);
                     }
-                    else
+                    else if (containerName.Equals("partners"))
                     {
                         partner.Logo = imageUrl;
+                    }
+                    else
+                    {
+                        solution.SolutionImage = imageUrl;
                     }
                     i++;
                 }

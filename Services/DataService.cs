@@ -32,7 +32,7 @@ namespace LucidiaIT.Services
 
         public async Task<int> EditAsync(TEntity t)
         {
-            _entity.Update(t);
+            _context.Update(t);            
             return await _context.SaveChangesAsync();
         }
 

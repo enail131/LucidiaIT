@@ -6,11 +6,11 @@
 
 #page-jumbotron {
 
-    #home-jumbotron { @include background-properties('/images/Optimized-worldhands.jpg'); }
-    #about-us-jumbotron { @include background-properties('/images/Optimized-orb.jpg'); }
+    #home-jumbotron { @include background-properties('/images/Optimized-about-us.jpg'); }
+    #about-us-jumbotron { @include background-properties('/images/Optimized-people.jpg'); }
     #services-jumbotron { @include background-properties('/images/Optimized-galaxy.jpg'); }
     #patners-jumbotron { @include background-properties('/images/Optimized-worldtablet.jpg'); }
-    #contact-us-jumbotron { @include background-properties('/images/Optimized-orbhand.jpg'); }
+    #contact-us-jumbotron { @include background-properties('/images/Optimized-worldtablet.jpg'); }
 
     .jumbotron {
         background: url('/images/Optimized-worldhands.jpg') no-repeat center;
@@ -21,25 +21,33 @@
         position: relative;
     }
 
-    #jumbotron-content {
-        position: absolute;
+    #jumbotron-content {        
         color: rgb(256, 256, 256);
-        left: 8%;
-        top: 25%;
+        border-radius: 4px;
+        margin-top: 10%;
+
+        @media (max-width: $bp-xs) {
+            margin-top: 45%;
+        }
 
         h2 {
             font-size: 40px;
+            margin-top: 0;
+            color: rgb(13, 66, 159);
+            font-weight: 600;
+            font-size: 55px;
+
+            @media (max-width: $bp-xs) {
+                font-size: 35px;
+            }            
+        }
+
+        #services-title {
+            color: white;
         }
 
         p {
             font-size: 16px;
         }
-    }
-
-    @media (max-width: $bp-xs) {
-        #jumbotron-content {
-            left: 0;
-            top: 30%;
-        }
-    }
+    }    
 }

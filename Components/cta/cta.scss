@@ -3,10 +3,13 @@
     margin-bottom: 0;
     background: rgba(4, 29, 55, .4);
     padding: 25px 0;
+    margin-left: -50px;
+    margin-right: -50px;
 
     .cta-image {
         height: 45px;
         width: 75px;
+        margin: auto;
     }
 
     h3 {
@@ -16,5 +19,9 @@
 
     .btn {
         margin-top: 5px;
+    }
+
+    @media (max-width: $bp-sm-max) {
+        text-align: center;
     }
 }
