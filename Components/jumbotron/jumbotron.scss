@@ -2,14 +2,22 @@
     background: url($image-url) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
+
+    @media (max-width: $bp-xs) {
+        background-attachment: scroll;
+    }
 }
 
 #page-jumbotron {
 
     #home-jumbotron { @include background-properties('/images/Optimized-about-us.jpg'); }
+
     #about-us-jumbotron { @include background-properties('/images/Optimized-people.jpg'); }
+
     #services-jumbotron { @include background-properties('/images/Optimized-galaxy.jpg'); }
+
     #patners-jumbotron { @include background-properties('/images/Optimized-worldtablet.jpg'); }
+
     #contact-us-jumbotron { @include background-properties('/images/Optimized-worldtablet.jpg'); }
 
     .jumbotron {
@@ -21,7 +29,7 @@
         position: relative;
     }
 
-    #jumbotron-content {        
+    #jumbotron-content {
         color: rgb(256, 256, 256);
         border-radius: 4px;
         margin-top: 10%;
@@ -36,18 +44,25 @@
             color: rgb(13, 66, 159);
             font-weight: 600;
             font-size: 55px;
+            text-shadow: 3px 3px 2px rgba(0,0,0,.4);
 
             @media (max-width: $bp-xs) {
                 font-size: 35px;
-            }            
+            }
         }
 
-        #services-title {
+        #services-title,
+        #contact-us-title {
             color: white;
+        }
+        
+        .home-jumbo-title,
+        #about-us-title {
+            text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, .4);
         }
 
         p {
             font-size: 16px;
         }
-    }    
+    }
 }

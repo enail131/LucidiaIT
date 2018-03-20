@@ -10,123 +10,65 @@
     ViewData["Title"] = "About us";
 }
 
+
+@section Tracking {
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116066642-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116066642-1');
+    </script>
+}
+
 @section Jumbotron {
     <div id="about-us-jumbotron" class="jumbotron">
         <div class="container" id="jumbotron-content">
-            <h2 class="title">We Are Lucidia IT</h2>
-            @*<p>We are one team.  Supportive, encouraging and committed to the success of our customers.  We work with integrity to create an open, transparent, and trust-based environment.  We are accountable for and will stand behind the collaborative decisions we make together with our customers and with each other.   We encourage thinking outside the box with passion and vigor, respecting and appreciating the perspectives of others.</p>*@
+            <h2 id="about-us-title" class="title">About us</h2>
         </div>
     </div>
 }
 
-    <div id="about-us" class="container">
+<div id="about-us" class="container">
+    <h2 class="team-title title">Our culture</h2>
+    <p class="about-us-paragraph">
+        <span><strong>We are one team...</strong></span><br />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportive, encouraging and committed to the success of our customers.</span>
+    </p>
+    <p class="about-us-paragraph">
+        <span><strong>We are accountable...</strong></span><br />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the collaborative decisions we make together with our customers and each other, and we will stand behind them.</span>
+    </p>
+    <p class="about-us-paragraph">
+        <span><strong>We work with Integrity...</strong></span><br />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creating an open, transparent, and trust-based environment.</span>
+    </p>
+    <p class="about-us-paragraph">
+        <span><strong>We encourage thinking outside the box...</strong></span><br />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With passion and vigor.  We respect and appreciate the perspectives of others.</span>
+    </p>
+    <p class="about-us-paragraph">
+        <span><strong>We care...</strong></span><br />
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About the growth and development of our team, our customers, and our community.</span>
+    </p>
 
-        @*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-                <li data-target="#myCarousel" data-slide-to="4"></li>
-                <li data-target="#myCarousel" data-slide-to="5"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="~/images/Optimized-datacenter.jpg" alt="ASP.NET" class="img-responsive" />
-                    <div class="carousel-caption" role="option">
-                        <div class="caption-content">
-                            <p><strong>We are one team...</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportive, encouraging and committed to the success of our customers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="~/images/Optimized-orb.jpg" alt="Visual Studio" class="img-responsive" />
-                    <div class="carousel-caption" role="option">
-                        <div class="caption-content">
-                            <p><strong>We are accountable...</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the collaborative decisions we make together with our customers and each other, and we will stand behind them.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="~/images/Optimized-galaxy.jpg" alt="Package Management" class="img-responsive" />
-                    <div class="carousel-caption" role="option">
-                        <div class="caption-content">
-                            <p><strong>We work with Integrity...</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creating an open, transparent, and trust-based environment.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="~/images/Optimized-orbhand.jpg" alt="Microsoft Azure" class="img-responsive" />
-                    <div class="carousel-caption" role="option">
-                        <div class="caption-content">
-                            <p><strong>We encourage thinking outside the box...</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With passion and vigor.  We respect and appreciate the perspectives of others.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="~/images/Optimized-orbhand.jpg" alt="Microsoft Azure" class="img-responsive" />
-                    <div class="carousel-caption" role="option">
-                        <div class="caption-content">
-                            <p><strong>We care...</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About the growth and development of our team, our customers, and our community.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>*@
+    <div class="clearfix"></div>
 
-
-        <h2 class="team-title title">Our culture</h2>
-        <p class="about-us-paragraph">
-            <span><strong>We are one team...</strong></span><br />
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Supportive, encouraging and committed to the success of our customers.</span>
-        </p>
-        <p class="about-us-paragraph">
-            <span><strong>We are accountable...</strong></span><br />
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For the collaborative decisions we make together with our customers and each other, and we will stand behind them.</span>
-        </p>
-        <p class="about-us-paragraph">
-            <span><strong>We work with Integrity...</strong></span><br />
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creating an open, transparent, and trust-based environment.</span>
-        </p>
-        <p class="about-us-paragraph">
-            <span><strong>We encourage thinking outside the box...</strong></span><br />
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With passion and vigor.  We respect and appreciate the perspectives of others.</span>
-        </p>
-        <p class="about-us-paragraph">
-            <span><strong>We care...</strong></span><br />
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; About the growth and development of our team, our customers, and our community.</span>
+    <div class="row" id="people-container">
+        <h2 class="team-title title">Our team</h2>
+        <p class="our-team-paragraph">
+            Located in Indianapolis and serving world-wide, we have a collective experience of over 80 years of hands-on experience designing and working with computer networks and computer systems.  Our team has built Data Centers and networks for some of the largest customers in the Midwest, including numerous Fortune 500 organizations.
         </p>
 
-        <div class="clearfix"></div>
-
-        <div class="row" id="people-container">
-            <h2 class="team-title title">Our team</h2>
-            <p class="our-team-paragraph">
-                Located in Indianapolis and serving world-wide, we have a collective experience of over 80 years of hands-on experience designing and working with computer networks and computer systems.  Our team has built Data Centers and networks for some of the largest customers in the Midwest, including numerous Fortune 500 organizations.
-            </p>
-
-            @if (SignInManager.IsSignedIn(User))
+        @if (SignInManager.IsSignedIn(User))
         {
             <p>
                 <a asp-controller="Employees" asp-action="Create">Create New</a> |
                 <a asp-controller="Employees" asp-action="Index">Employees List</a>
             </p>
-    }
+        }
 
-            @foreach (var employee in Model)
+        @foreach (var employee in Model)
         {
             <div class="col-sm-12 col-md-4 people-bio">
                 <div class="col-sm-6 col-sm-offset-3 people-img-container">
@@ -139,7 +81,7 @@
                     <p>@employee.Description</p>
                 </div>
             </div>
-    }
-        </div>
+        }
     </div>
+</div>
 

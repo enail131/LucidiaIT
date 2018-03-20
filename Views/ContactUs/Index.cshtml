@@ -3,6 +3,18 @@
     ViewData["Title"] = "Contact";
 }
 
+
+@section Tracking {
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116066642-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116066642-1');
+    </script>
+}
+
 @section Jumbotron {
     <div id="contact-us-jumbotron" class="jumbotron">
         <div class="container" id="jumbotron-content">
@@ -45,10 +57,10 @@
                 <h2 class="title">Connect with us</h2>
                 <ul id="social-media-chicklets">
                     @*<li class="social-media-chicklet">
-                        <a href="https://www.facebook.com">
-                            <img src="~/images/facebook.svg" alt="Facebook logo" />
-                        </a>
-                    </li>*@
+                            <a href="https://www.facebook.com">
+                                <img src="~/images/facebook.svg" alt="Facebook logo" />
+                            </a>
+                        </li>*@
                     <li class="social-media-chicklet">
                         <a href="https://www.twitter.com/lucidiait/">
                             <img src="~/images/twitter.svg" alt="Twitter logo" />
@@ -60,7 +72,7 @@
                         </a>
                     </li>
                     <li class="social-media-chicklet">
-                        <a href="https://www.linkedin.com/lucidiait/">
+                        <a href="https://www.linkedin.com/company/28156352/">
                             <img src="~/images/linkedin.svg" alt="Linked in logo" />
                         </a>
                     </li>

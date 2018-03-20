@@ -10,6 +10,18 @@
     ViewData["Title"] = "Solutions";
 }
 
+
+@section Tracking {
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116066642-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116066642-1');
+    </script>
+}
+
 @section Jumbotron {
     <div id="services-jumbotron" class="jumbotron">
         <div class="container" id="jumbotron-content">
@@ -35,19 +47,19 @@
         @if (SignInManager.IsSignedIn(User))
         {
             <div id="account-links">
-                <a asp-controller="Solutions" asp-action="Create">Create new</a> | 
+                <a asp-controller="Solutions" asp-action="Create">Create new</a> |
                 <a asp-controller="Solutions" asp-action="List">Soltions list</a>
-            </div>            
+            </div>
         }
-
+        <div class="clearfix"></div>
         @foreach (var solution in Model)
         {
             <div class="solution-container col-xs-12 col-md-6">
-                <div class="solution col-xs-12" style="background: url('@solution.SolutionImage') no-repeat center; background-size: cover;">
-                    @*<img class="solution-image" src="@solution.SolutionImage" alt="@solution.Description" />*@
+                <div class="solution col-xs-12">
+                    <img class="solution-image" src="@solution.SolutionImage" />
                     <div class="solution-content col-xs-12">
                         <h2>@solution.Name</h2>
-                        <p>@solution.Description</p>
+                        @Html.Raw(solution.Description)
                     </div>
                 </div>
             </div>

@@ -85,6 +85,11 @@
         width: 30%;
         margin: 5px;
         float: right;
+
+        @media (max-width: $bp-xs) {
+            float: none; 
+            clear: both;
+        }
     }
 
     #copyright-container,
@@ -102,7 +107,7 @@
     @media (max-width: $bp-sm-min) {
 
         #footer-left {
-            padding: 0;
+            padding: 0 10px;
 
             .footer-brand {
                 padding-right: 0;

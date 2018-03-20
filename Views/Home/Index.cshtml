@@ -9,23 +9,30 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Tracking {
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116066642-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116066642-1');
+    </script>
+}
+
 @section Jumbotron {
     <div id="home-jumbotron" class="jumbotron">
         <div class="container" id="jumbotron-content">
             <h2 class="home-jumbo-title title">Engineering Led</h2>
             <h2 class="home-jumbo-title title">Customer Focused</h2>
             <h2 class="home-jumbo-title title">Woman Owned</h2>
-            @*<p>
-                Innovative solutions begin with asking the right questions and truly listening to what the clients say.
-                Whether it’s bringing in the right technology or optimizing current assets, our solutions are custom fit for the client’s needs and requirements
-            </p>*@
         </div>
     </div>
 }
 
 <div id="mission-statement" class="container">
     <div class="row">
-        <h2 class="title">Lucidia it</h2>
+        <h2>LUCIDIA <span class="lucidia-I">i</span>T</h2>
         <p>Lucidia IT is a woman owned small business headquartered in Indianapolis, Indiana.  We provide IT solutions which help our customers adopt and support advanced technologies in their environments.  We specifically focus on data center solutions, cloud technologies and enterprise networking architectures for our customers.  Our diverse backgrounds and expertise bring over 80 years of combined expertise.</p>
 
         <p>
@@ -48,46 +55,3 @@
         @await Html.PartialAsync("~/Views/Partners/_Partners.cshtml", Model)
     </div>
 </div>
-
-@*@await Html.PartialAsync("~/Views/Shared/_CTA.cshtml")*@
-
-@*<div class="row">
-        <h1 style="text-align: center;">Services</h1>
-        <div class="col-md-3">
-            <h2>Application uses</h2>
-            <ul>
-                <li>Sample pages using ASP.NET Core MVC</li>
-                <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>How to</h2>
-            <ul>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>Overview</h2>
-            <ul>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>Run &amp; Deploy</h2>
-            <ul>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-                <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-            </ul>
-        </div>
-    </div>*@

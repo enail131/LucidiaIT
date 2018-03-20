@@ -30,6 +30,47 @@ var lucidia = {
     }
 };
 
+lucidia.components.contactUs = (function ($) {
+    var constants = {
+        selectors: {
+            sendButton: '#send-email-btn',
+            contactForm: '#contact-us-form',
+            contactFormContainer: '#contact-form-container'
+        },
+        ajax: {
+            url: '/ContactUs/SendEmail',
+            dataType: 'HTML'
+        }
+    },
+        properties = {
+
+        },
+        methods = (function (c, p) {
+            var clickSendButton = function () {
+                $(c.selectors.sendButton).click(function () {
+                    sendEmail();
+                });                
+            },
+                sendEmail = function (formData) {
+                    if ($(c.selectors.contactForm).valid()) {
+                        $.post(c.ajax.url, $(c.selectors.contactForm).serialize(), sendEmailCallback, c.ajax.dataType);
+                    }
+                },
+                sendEmailCallback = function (data) {
+                    $(c.selectors.contactFormContainer).html(data);
+                },
+                eventHandlers = function () {
+                    clickSendButton();
+                },
+                init = function () {
+                    eventHandlers();
+                };
+            return {
+                init: init
+            }
+        }(constants, properties));
+    return methods;
+}(jQuery));
 lucidia.components.employee = (function ($) {
     var constants = {
         ajax: {            
@@ -143,47 +184,6 @@ lucidia.components.employee = (function ($) {
             return {
                 init: init
             };
-        }(constants, properties));
-    return methods;
-}(jQuery));
-lucidia.components.contactUs = (function ($) {
-    var constants = {
-        selectors: {
-            sendButton: '#send-email-btn',
-            contactForm: '#contact-us-form',
-            contactFormContainer: '#contact-form-container'
-        },
-        ajax: {
-            url: '/ContactUs/SendEmail',
-            dataType: 'HTML'
-        }
-    },
-        properties = {
-
-        },
-        methods = (function (c, p) {
-            var clickSendButton = function () {
-                $(c.selectors.sendButton).click(function () {
-                    sendEmail();
-                });                
-            },
-                sendEmail = function (formData) {
-                    if ($(c.selectors.contactForm).valid()) {
-                        $.post(c.ajax.url, $(c.selectors.contactForm).serialize(), sendEmailCallback, c.ajax.dataType);
-                    }
-                },
-                sendEmailCallback = function (data) {
-                    $(c.selectors.contactFormContainer).html(data);
-                },
-                eventHandlers = function () {
-                    clickSendButton();
-                },
-                init = function () {
-                    eventHandlers();
-                };
-            return {
-                init: init
-            }
         }(constants, properties));
     return methods;
 }(jQuery));
@@ -354,7 +354,8 @@ lucidia.components.solutions = (function ($) {
             createButton: '#create-solution-btn',
             token: "input[name='__RequestVerificationToken']",
             createUrl: '/Solutions/Create',
-            editUrl: '/Solutions/Edit'
+            editUrl: '/Solutions/Edit',
+            solutionID: '#solution-id'
         }
     },
         properties = {
@@ -366,6 +367,11 @@ lucidia.components.solutions = (function ($) {
                     createSolution();
                 });
             },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editButton).click(function () {
+                        editSolution();
+                    });
+                },
                 createSolution = function () {
                     var formData = new FormData(),
                         token = $(c.ajax.token).val();
@@ -388,7 +394,8 @@ lucidia.components.solutions = (function ($) {
                 },
                 editSolution = function () {
                     var formData = new FormData(),
-                        token = $(c.ajax.token);
+                        token = $(c.ajax.token).val();
+                    getSolutionID(formData);
                     getSolutionInfo(formData);
                     getSolutionImage(formData);
 
@@ -403,16 +410,25 @@ lucidia.components.solutions = (function ($) {
                         },
                         enctype: 'multipart/form-data',
                         url: c.ajax.editUrl,
-                        success: getSuccessful
+                        success: navigateAfterEdit
                     });
+                },
+                navigateAfterEdit = function (data) {
+                    window.location.href = data.url;
                 },
                 getSuccessful = function (data) {
                     $('#solution-container').html(data);
+                },
+                getSolutionID = function (formData) {
+                    formData.append("id", $(c.ajax.solutionID).val());
                 },
                 getSolutionInfo = function (formData) {
                     $(c.ajax.infoForm + ' input[type="text"]').each(function () {
                         formData.append($(this).attr("name"), $(this).val());
                     });
+
+                    var description = $("#editor").find('.ql-editor').html();
+                    formData.append("Description", description);
 
                     $(c.ajax.imageForm + " input[type='file']").each(function () {
                         var files = $(this).get(0).files;
@@ -429,8 +445,18 @@ lucidia.components.solutions = (function ($) {
                         }
                     });
                 },
+                createRichTextAreas = function () {
+                    var editor = new Quill('#editor', {
+                        modules: {
+                            'toolbar': { container: '#toolbar' },
+                            'link-tooltip': true
+                        },
+                        theme: 'snow',
+                    });
+                },
                 eventHandlers = function () {
                     clickCreateButtonHandler();
+                    clickEditButtonHandler();
                 },
                 init = function () {
                     eventHandlers();

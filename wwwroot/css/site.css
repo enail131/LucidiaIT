@@ -6,6 +6,11 @@
   src: url("/fonts/Market Fresh.ttf"); }
 
 /* END FONTS */
+clear-fix {
+  clear: both;
+  content: " ";
+  display: block; }
+
 .body-content {
   margin-top: 100px;
   overflow-x: hidden; }
@@ -25,73 +30,6 @@ img {
 @media (max-width: 768px) {
   .body-content {
     margin-top: 75px; } }
-
-#about-us {
-  clear: both;
-  /*img {
-        float: right;
-        height: 450px;
-        width: 50%;
-        padding: 0 10px;
-    }*/ }
-  #about-us .carousel-caption {
-    text-align: left;
-    top: 40%; }
-    #about-us .carousel-caption .caption-content {
-      background: transparent; }
-  #about-us #myCarousel {
-    margin-bottom: 55px; }
-  #about-us .team-title {
-    text-align: center; }
-  #about-us .about-us-paragraph {
-    margin-bottom: 25px;
-    font-size: 16px;
-    line-height: 1.5em; }
-  #about-us #about-us-img {
-    float: right;
-    height: 200px;
-    margin-left: 7.5px; }
-  @media (max-width: 768px) {
-    #about-us #about-us-img {
-      float: none; }
-    #about-us .about-us-paragraph {
-      margin-top: 25px;
-      text-align: center; } }
-  #about-us h2 {
-    margin-bottom: 30px; }
-  #about-us p {
-    font-size: 16px; }
-  #about-us .our-team-paragraph {
-    margin: auto;
-    text-align: left;
-    margin-bottom: 35px;
-    line-height: 1.5em; }
-  #about-us #people-container {
-    margin-top: 45px; }
-  #about-us .item {
-    height: 450px; }
-  @media (max-width: 769px) {
-    #about-us .item {
-      height: 200px; } }
-  #about-us .people-img-hover, #about-us .people-img {
-    text-align: center;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-size: cover; }
-  #about-us .people-img-hover {
-    display: none; }
-  #about-us .people-img {
-    display: block;
-    margin: auto; }
-  #about-us .people-img-container:hover .people-img {
-    display: none; }
-  #about-us .people-img-container:hover .people-img-hover {
-    display: block; }
-  #about-us .people-bio {
-    text-align: center;
-    margin-bottom: 20px;
-    min-height: 405px; }
 
 #contact-container #contact-form-container {
   margin-bottom: 25px; }
@@ -161,6 +99,73 @@ img {
     width: 45px;
     float: left;
     margin: 25px 20px 25px 0; }
+
+#about-us {
+  clear: both;
+  /*img {
+        float: right;
+        height: 450px;
+        width: 50%;
+        padding: 0 10px;
+    }*/ }
+  #about-us .carousel-caption {
+    text-align: left;
+    top: 40%; }
+    #about-us .carousel-caption .caption-content {
+      background: transparent; }
+  #about-us #myCarousel {
+    margin-bottom: 55px; }
+  #about-us .team-title {
+    text-align: center; }
+  #about-us .about-us-paragraph {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.5em; }
+  #about-us #about-us-img {
+    float: right;
+    height: 200px;
+    margin-left: 7.5px; }
+  @media (max-width: 768px) {
+    #about-us #about-us-img {
+      float: none; }
+    #about-us .about-us-paragraph {
+      margin-top: 25px;
+      text-align: center; } }
+  #about-us h2 {
+    margin-bottom: 30px; }
+  #about-us p {
+    font-size: 16px; }
+  #about-us .our-team-paragraph {
+    margin: auto;
+    text-align: left;
+    margin-bottom: 35px;
+    line-height: 1.5em; }
+  #about-us #people-container {
+    margin-top: 45px; }
+  #about-us .item {
+    height: 450px; }
+  @media (max-width: 769px) {
+    #about-us .item {
+      height: 200px; } }
+  #about-us .people-img-hover, #about-us .people-img {
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-size: cover; }
+  #about-us .people-img-hover {
+    display: none; }
+  #about-us .people-img {
+    display: block;
+    margin: auto; }
+  #about-us .people-img-container:hover .people-img {
+    display: none; }
+  #about-us .people-img-container:hover .people-img-hover {
+    display: block; }
+  #about-us .people-bio {
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 405px; }
 
 .cta-container {
   margin-top: 25px;
@@ -242,6 +247,10 @@ img {
     width: 30%;
     margin: 5px;
     float: right; }
+    @media (max-width: 768px) {
+      #footer-container .partner-logo-footer {
+        float: none;
+        clear: both; } }
   #footer-container #copyright-container,
   #footer-container #footer-logo-container {
     display: inline-block;
@@ -252,7 +261,7 @@ img {
     margin-bottom: 15px; }
   @media (max-width: 769px) {
     #footer-container #footer-left {
-      padding: 0; }
+      padding: 0 10px; }
       #footer-container #footer-left .footer-brand {
         padding-right: 0; }
       #footer-container #footer-left img {
@@ -291,33 +300,45 @@ img {
       float: none;
       text-align: center; } }
 
-#register-container {
-  float: right; }
-
 #page-jumbotron #home-jumbotron {
   background: url("/images/Optimized-about-us.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    #page-jumbotron #home-jumbotron {
+      background-attachment: scroll; } }
 
 #page-jumbotron #about-us-jumbotron {
   background: url("/images/Optimized-people.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    #page-jumbotron #about-us-jumbotron {
+      background-attachment: scroll; } }
 
 #page-jumbotron #services-jumbotron {
   background: url("/images/Optimized-galaxy.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    #page-jumbotron #services-jumbotron {
+      background-attachment: scroll; } }
 
 #page-jumbotron #patners-jumbotron {
   background: url("/images/Optimized-worldtablet.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    #page-jumbotron #patners-jumbotron {
+      background-attachment: scroll; } }
 
 #page-jumbotron #contact-us-jumbotron {
   background: url("/images/Optimized-worldtablet.jpg") no-repeat center;
   background-size: cover;
   background-attachment: fixed; }
+  @media (max-width: 768px) {
+    #page-jumbotron #contact-us-jumbotron {
+      background-attachment: scroll; } }
 
 #page-jumbotron .jumbotron {
   background: url("/images/Optimized-worldhands.jpg") no-repeat center;
@@ -339,14 +360,35 @@ img {
     margin-top: 0;
     color: #0d429f;
     font-weight: 600;
-    font-size: 55px; }
+    font-size: 55px;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.4); }
     @media (max-width: 768px) {
       #page-jumbotron #jumbotron-content h2 {
         font-size: 35px; } }
-  #page-jumbotron #jumbotron-content #services-title {
+  #page-jumbotron #jumbotron-content #services-title,
+  #page-jumbotron #jumbotron-content #contact-us-title {
     color: white; }
+  #page-jumbotron #jumbotron-content .home-jumbo-title,
+  #page-jumbotron #jumbotron-content #about-us-title {
+    text-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.4); }
   #page-jumbotron #jumbotron-content p {
     font-size: 16px; }
+
+#register-container {
+  float: right; }
+
+#mission-statement {
+  margin-top: -25px;
+  margin-bottom: 35px; }
+  #mission-statement h2 {
+    margin-bottom: 15px;
+    text-align: center;
+    display: block;
+    line-height: 1.2; }
+    #mission-statement h2 .lucidia-I {
+      font-size: 35px; }
+  #mission-statement p {
+    font-size: 18px; }
 
 .navbar-inverse {
   margin-bottom: 0;
@@ -380,15 +422,6 @@ img {
           border-bottom: 1px solid grey;
           font-size: 14px;
           font-weight: bold; } }
-
-#mission-statement {
-  margin-top: -25px;
-  margin-bottom: 35px; }
-  #mission-statement h2 {
-    margin-bottom: 15px;
-    text-align: center; }
-  #mission-statement p {
-    font-size: 18px; }
 
 #partners {
   position: relative; }
@@ -570,17 +603,21 @@ img {
   position: relative;
   padding: 0;
   margin-bottom: 25px; }
-  .solutions-container .solution-container .solution:hover .solution-content {
-    top: 0; }
   @media (max-width: 768px) {
     .solutions-container .solution-container .solution {
-      position: initial; } }
+      position: static;
+      height: 100%; } }
+  .solutions-container .solution-container .solution:hover .solution-content {
+    top: 0; }
+    @media (max-width: 768px) {
+      .solutions-container .solution-container .solution:hover .solution-content h2 {
+        text-align: center; } }
 
 .solutions-container .solution-container .solution-content {
   height: 100%;
   width: 100%;
   position: absolute;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
   top: 340px;
   -webkit-transition-property: all;
   transition-property: all;
@@ -589,4 +626,9 @@ img {
   color: white; }
   @media (max-width: 768px) {
     .solutions-container .solution-container .solution-content {
-      position: initial; } }
+      position: static;
+      background-color: #fff;
+      color: #000; } }
+
+#editor {
+  height: 250px; }

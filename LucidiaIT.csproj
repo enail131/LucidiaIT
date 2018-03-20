@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\lib\quill\" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,8 @@
             createButton: '#create-solution-btn',
             token: "input[name='__RequestVerificationToken']",
             createUrl: '/Solutions/Create',
-            editUrl: '/Solutions/Edit'
+            editUrl: '/Solutions/Edit',
+            solutionID: '#solution-id'
         }
     },
         properties = {
@@ -19,6 +20,11 @@
                     createSolution();
                 });
             },
+                clickEditButtonHandler = function () {
+                    $(c.ajax.editButton).click(function () {
+                        editSolution();
+                    });
+                },
                 createSolution = function () {
                     var formData = new FormData(),
                         token = $(c.ajax.token).val();
@@ -41,7 +47,8 @@
                 },
                 editSolution = function () {
                     var formData = new FormData(),
-                        token = $(c.ajax.token);
+                        token = $(c.ajax.token).val();
+                    getSolutionID(formData);
                     getSolutionInfo(formData);
                     getSolutionImage(formData);
 
@@ -56,16 +63,25 @@
                         },
                         enctype: 'multipart/form-data',
                         url: c.ajax.editUrl,
-                        success: getSuccessful
+                        success: navigateAfterEdit
                     });
+                },
+                navigateAfterEdit = function (data) {
+                    window.location.href = data.url;
                 },
                 getSuccessful = function (data) {
                     $('#solution-container').html(data);
+                },
+                getSolutionID = function (formData) {
+                    formData.append("id", $(c.ajax.solutionID).val());
                 },
                 getSolutionInfo = function (formData) {
                     $(c.ajax.infoForm + ' input[type="text"]').each(function () {
                         formData.append($(this).attr("name"), $(this).val());
                     });
+
+                    var description = $("#editor").find('.ql-editor').html();
+                    formData.append("Description", description);
 
                     $(c.ajax.imageForm + " input[type='file']").each(function () {
                         var files = $(this).get(0).files;
@@ -82,8 +98,18 @@
                         }
                     });
                 },
+                createRichTextAreas = function () {
+                    var editor = new Quill('#editor', {
+                        modules: {
+                            'toolbar': { container: '#toolbar' },
+                            'link-tooltip': true
+                        },
+                        theme: 'snow',
+                    });
+                },
                 eventHandlers = function () {
                     clickCreateButtonHandler();
+                    clickEditButtonHandler();
                 },
                 init = function () {
                     eventHandlers();
