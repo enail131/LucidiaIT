@@ -29,7 +29,6 @@ var lucidia = {
         error: []
     }
 };
-
 lucidia.components.contactUs = (function ($) {
     var constants = {
         selectors: {
@@ -71,6 +70,7 @@ lucidia.components.contactUs = (function ($) {
         }(constants, properties));
     return methods;
 }(jQuery));
+
 lucidia.components.employee = (function ($) {
     var constants = {
         ajax: {            
